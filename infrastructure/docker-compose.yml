@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin
+    ports:
+        # Port used for the Zipkin UI and HTTP Api
+      - 9411:9411

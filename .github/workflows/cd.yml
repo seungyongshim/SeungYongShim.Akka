@@ -1,0 +1,54 @@
+name: CD
+
+on:
+  push:
+    tags:
+    - v*
+
+jobs:
+  Build-and-Tests:
+    name: Build and Test
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.101
+    - name: Install dependencies
+      run: |
+        cd src
+        dotnet restore
+    - name: Build
+      run: |
+        cd src
+        dotnet build --configuration Debug --no-restore
+    - name: Test
+      run: |
+        cd src
+        dotnet test 
+    - id: get_version
+      uses: seungyongshim/get-version-action@v1.3
+    - name: Modification Version
+      run: |
+        cd src
+        sed -i "s/<Version>0.0.0.000/<Version>${{ steps.get_version.outputs.version }}/g" ./common.props
+        cat ./common.props
+    - name: Publish NuGet (SeungYongShim.Akka.DependencyInjection)
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH:  src/SeungYongShim.Akka.DependencyInjection/SeungYongShim.Akka.DependencyInjection.csproj
+        VERSION_FILE_PATH: src/common.props
+        NUGET_KEY: ${{ secrets.api }}
+        INCLUDE_SYMBOLS: true
+        TAG_COMMIT: false
+    - name: Publish NuGet (SeungYongShim.Akka.DependencyInjection.XUnit2)
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH:  src/SeungYongShim.Akka.DependencyInjection.XUnit2/SeungYongShim.Akka.DependencyInjection.XUnit2.csproj
+        VERSION_FILE_PATH: src/common.props
+        NUGET_KEY: ${{ secrets.api }}
+        INCLUDE_SYMBOLS: true
+        TAG_COMMIT: false

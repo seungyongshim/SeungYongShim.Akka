@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../common.props" />
+  <PropertyGroup>
+    <TargetFramework>$(NetStandardLibVersion)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Akka" Version="$(AkkaVersion)" />
+    <PackageReference Include="Akka.DependencyInjection" Version="$(AkkaVersion)" />
+    <PackageReference Include="Akka.TestKit.XUnit2" Version="$(AkkaVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="$(MsExtVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeungYongShim.Akka.DependencyInjection\SeungYongShim.Akka.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

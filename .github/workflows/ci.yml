@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  Build-and-Tests:
+    name: Build and Test
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.101
+    - name: Add Nuget
+      run: |
+        cd src
+        for proj in $(dotnet sln list | grep Tests)        
+        do
+          dotnet add "$proj" package JunitXml.TestLogger || true
+          dotnet add "$proj" package altcover || true	
+        done
+    - name: Test
+      run: |	  
+        cd src	
+        dotnet clean 	        
+        dotnet restore	      
+        dotnet test --logger "junit;LogFileName=Report.xml"
+        sleep 2s
+        dotnet test /p:AltCover=true /p:AltCoverReport="../$(ProjectName).altcover.xml" /p:AltCoverAssemblyExcludeFilter='(xunit.*)|(System.*)|(.*Tests)'
+    - name: ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@4.8.4
+      with:
+        reports: '**/*altcover.xml'
+        targetdir: 'docs' # REQUIRED # The directory where the generated report should be saved.
+        sourcedirs: 'src' 
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        path: docs
+        retention-days: 90  
+    - name: Push Report
+      uses: EndBug/add-and-commit@v4 # You can change this to use a specific version
+      with:
+        add: 'docs/*'
+        message: 'Coverage Report ${GITHUB_SHA}' 
+        ref: 'gh-pages' 
+        remove: ''  
+    - name: Publish Unit Test Results
+      uses: docker://ghcr.io/enricomi/publish-unit-test-result-action:v1
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        files: src/**/Report.xml
