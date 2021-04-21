@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,10 +33,9 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                     Become(Start);
                     Stash.UnstashAll();
                 });
-
             }
 
-            void Start()
+            private void Start()
             {
                 Receive<Sample>(m =>
                 {

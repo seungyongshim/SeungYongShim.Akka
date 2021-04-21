@@ -3,8 +3,8 @@
     <Copyright>Copyright © 2020-2021 </Copyright>
     <Authors>Seungyong Shim</Authors>
     <Version>0.0.0.000</Version>
-    <PackageProjectUrl>https://github.com/seungyongshim/SeungYongShim.Akka.DependencyInjection</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/seungyongshim/SeungYongShim.Akka.DependencyInjection/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/seungyongshim/SeungYongShim.Akka</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/seungyongshim/SeungYongShim.Akka/blob/master/LICENSE</PackageLicenseUrl>
     <NoWarn>$(NoWarn);CS1591;xUnit1013</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -33,7 +33,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup>
-    <RepositoryUrl>https://github.com/seungyongshim/SeungYongShim.Akka.DependencyInjection</RepositoryUrl>
+    <RepositoryUrl>https://github.com/seungyongshim/SeungYongShim.Akka</RepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
