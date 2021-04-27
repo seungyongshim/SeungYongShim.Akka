@@ -9,14 +9,14 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class AddAkkaExtensions
     {
-
         internal static IServiceCollection AddAkka(this IServiceCollection services,
                                                    string actorSystemName,
                                                    string hocon,
+                                                   Func<Config, Config> hoconFunc,
                                                    Action<IServiceProvider, ActorSystem> startAction = null) =>
             services.AddSingleton(sp =>
                 BootstrapSetup.Create()
-                              .WithConfig(ConfigurationFactory.ParseString(hocon))
+                              .WithConfig(hoconFunc(ConfigurationFactory.ParseString(hocon)))
                               .And(ServiceProviderSetup.Create(sp)))
                     .AddSingleton<AkkaHostedServiceStart>(sp => sys => startAction?.Invoke(sp, sys))
                     .AddSingleton(typeof(IPropsFactory<>), typeof(PropsFactory<>))

@@ -30,13 +30,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
             var memoryExport = new List<Activity>();
 
             using var host = Host.CreateDefaultBuilder()
-                                 .UseAkka("test", @"
-                                 akka {
-                                   actor {
-                                     provider = ""SeungYongShim.Akka.OpenTelemetry.TraceLocalActorRefProvider, SeungYongShim.Akka.OpenTelemetry""
-                                   }
-                                 }
-                                 ", (sp, sys) =>
+                                 .UseAkka("test", string.Empty, conf => conf.WithOpenTelemetry(), (sp, sys) =>
                                  {
                                      var ping = sys.ActorOf(sys.PropsFactory<PingActor>()
                                                                .Create(), "PingActor");
