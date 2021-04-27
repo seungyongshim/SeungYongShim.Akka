@@ -33,11 +33,10 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
                 using var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, parentId);
                 activity?.AddTag("ActorPath", Self.Path.ToStringWithUid());
+                activity?.AddTag("message", $"{message}");
 
                 try
                 {
-                    activity?.AddTag("message", $"{message}");
-
                     base.ReceiveMessage(message);
                 }
                 catch (Exception ex)
