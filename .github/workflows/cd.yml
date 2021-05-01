@@ -34,30 +34,15 @@ jobs:
         cd src
         sed -i "s/<Version>0.0.0.000/<Version>${{ steps.get_version.outputs.version }}/g" ./common.props
         cat ./common.props
-    - name: Publish NuGet (SeungYongShim.Akka.DependencyInjection)
-      uses: brandedoutcast/publish-nuget@v2.5.5
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH:  src/SeungYongShim.Akka.DependencyInjection/SeungYongShim.Akka.DependencyInjection.csproj
-        VERSION_FILE_PATH: src/common.props
-        NUGET_KEY: ${{ secrets.api }}
-        INCLUDE_SYMBOLS: true
-        TAG_COMMIT: false
-    - name: Publish NuGet (SeungYongShim.Akka.DependencyInjection.XUnit2)
-      uses: brandedoutcast/publish-nuget@v2.5.5
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH:  src/SeungYongShim.Akka.DependencyInjection.XUnit2/SeungYongShim.Akka.DependencyInjection.XUnit2.csproj
-        VERSION_FILE_PATH: src/common.props
-        NUGET_KEY: ${{ secrets.api }}
-        INCLUDE_SYMBOLS: true
-        TAG_COMMIT: false
-    - name: Publish NuGet (SeungYongShim.Akka.OpenTelemetry)
-      uses: brandedoutcast/publish-nuget@v2.5.5
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH:  src/SeungYongShim.Akka.OpenTelemetry/SeungYongShim.Akka.OpenTelemetry.csproj
-        VERSION_FILE_PATH: src/common.props
-        NUGET_KEY: ${{ secrets.api }}
-        INCLUDE_SYMBOLS: true
-        TAG_COMMIT: false
+    - name: Generate NuGet packages
+      run: | 
+        cd src
+        dotnet pack -c Release -o nugets
+
+    - name: Push packages to registry
+      run: |
+        cd src/nugets
+        dotnet nuget push "*.nupkg" -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      env:
+        NUGET_API_KEY: ${{ secrets.api }}
+  

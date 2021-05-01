@@ -31,11 +31,11 @@ jobs:
         dotnet restore	      
         dotnet test --logger "junit;LogFileName=Report.xml"
         sleep 2s
-        dotnet test /p:AltCover=true /p:AltCoverReport="../$(ProjectName).altcover.xml" /p:AltCoverAssemblyExcludeFilter='(xunit.*)|(System.*)|(.*Tests)'
+        dotnet test /p:AltCover=true /p:AltCoverReport="altcover.xml" /p:AltCoverAssemblyExcludeFilter='(xunit.*)|(System.*)|(.*Tests)'
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@4.8.4
       with:
-        reports: '**/*altcover.xml'
+        reports: '**/altcover.xml'
         targetdir: 'docs' # REQUIRED # The directory where the generated report should be saved.
         sourcedirs: 'src' 
     - name: Push Report
