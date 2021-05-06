@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SeungYongShim.Kafka" Version="1.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeungYongShim.Akka.OpenTelemetry\SeungYongShim.Akka.OpenTelemetry.csproj" />
+  </ItemGroup>
+
+</Project>
