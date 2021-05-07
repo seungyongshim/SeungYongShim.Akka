@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
+    - name: running infrastructure
+      run: |
+        cd infrastructure
+        docker-compose up -d
+        sleep 2s                    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:

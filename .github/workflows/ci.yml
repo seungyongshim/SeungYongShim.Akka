@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
+    - name: running infrastructure
+      run: |
+        cd infrastructure
+        docker-compose up -d
+        sleep 2s            
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -42,12 +47,13 @@ jobs:
       uses: EndBug/add-and-commit@v4
       with:
         add: 'docs/*'
-        message: 'Coverage Report ${GITHUB_SHA}' 
+        message: "Coverage Report  ${{github.sha}}"
         ref: 'gh-pages' 
         remove: ''  
+      if: ${{ github.ref == 'refs/heads/main' }}
     - name: Publish Unit Test Results
-      uses: docker://ghcr.io/enricomi/publish-unit-test-result-action:v1
-      if: always()
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: ${{ github.actor != 'dependabot[bot]' && always() }}
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ github.token }}
         files: src/**/Report.xml
