@@ -18,7 +18,6 @@ exporters:
   jaeger:
     endpoint: jaeger-all-in-one:14250
     insecure: true    
-
 processors:
   batch:
 
@@ -40,3 +39,7 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [logging, prometheus]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
