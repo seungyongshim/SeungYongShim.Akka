@@ -46,7 +46,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
 
                     switch (ret)
                     {
-                        case var m when m.Exception is Exception:
+                        case ResultException m:
                             throw m.Exception;
                     }
                 });

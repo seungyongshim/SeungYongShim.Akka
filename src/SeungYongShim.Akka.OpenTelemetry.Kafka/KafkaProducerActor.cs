@@ -1,16 +1,15 @@
-using System.Diagnostics;
+using System;
+using Akka.Actor;
 using Google.Protobuf;
 using SeungYongShim.Kafka;
-using Akka.Actor;
-using System;
 
 namespace SeungYongShim.Akka.OpenTelemetry.Kafka
 {
     public class KafkaProducerActor : ReceiveActor
     {
         public record Message(IMessage Body, string Topic, string Key = "1");
-
-        public record Result(Exception Exception);
+        public record Result();
+        public record ResultException(Exception Exception) : Result;
 
         public KafkaProducerActor(KafkaProducer kafkaProducer)
         {
@@ -23,11 +22,11 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka
                 try
                 {
                     await kafkaProducer.SendAsync(msg.Body, msg.Topic, msg.Key);
-                    sender.Tell(new Result(null));
+                    sender.Tell(new Result());
                 }
                 catch (Exception ex)
                 {
-                    sender.Tell(new Result(ex));
+                    sender.Tell(new ResultException(ex));
                 }
             });
         }
