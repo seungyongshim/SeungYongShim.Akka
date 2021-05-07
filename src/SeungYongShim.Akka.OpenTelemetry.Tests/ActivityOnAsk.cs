@@ -8,6 +8,7 @@ using FluentAssertions;
 using FluentAssertions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using SeungYongShim.Akka.DependencyInjection;
 using Xunit;
@@ -38,11 +39,12 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  .ConfigureServices(services =>
                                      services.AddSingleton(new ActivitySource("ActivityOnAsk"))
                                              .AddOpenTelemetryTracing((builder) => builder
-                                             .AddSource("ActivityOnAsk")
-                                             .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                             .SetSampler(new AlwaysOnSampler())
-                                             .AddZipkinExporter()
-                                             .AddInMemoryExporter(memoryExport)))
+                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SeungYongShim.Akka.OpenTelemetry.Tests.ActivityOnAsk"))
+                                                .AddSource("ActivityOnAsk")
+                                                .AddSource("SeungYongShim.Akka.OpenTelemetry")
+                                                .SetSampler(new AlwaysOnSampler())
+                                                .AddOtlpExporter()
+                                                .AddInMemoryExporter(memoryExport)))
                                  .UseAkkaWithXUnit2()
                                  .Build();
 

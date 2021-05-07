@@ -12,6 +12,7 @@ using FluentAssertions.Extensions;
 using Google.Protobuf;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using SeungYongShim.Akka.DependencyInjection;
 using SeungYongShim.Kafka;
@@ -103,11 +104,12 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
                     {
                         services.AddSingleton(new ActivitySource("OnActivity"));
                         services.AddOpenTelemetryTracing(builder => builder
-                                   .AddSource("OnActivity")
-                                   .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                   .SetSampler(new AlwaysOnSampler())
-                                   .AddZipkinExporter()
-                                   .AddInMemoryExporter(memoryExport));
+                                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SeungYongShim.Akka.OpenTelemetry.Kafka.Tests.Simple"))
+                                    .AddSource("OnActivity")
+                                    .AddSource("SeungYongShim.Akka.OpenTelemetry")
+                                    .SetSampler(new AlwaysOnSampler())
+                                    .AddOtlpExporter()
+                                    .AddInMemoryExporter(memoryExport));
                     })
                     .Build();
 
