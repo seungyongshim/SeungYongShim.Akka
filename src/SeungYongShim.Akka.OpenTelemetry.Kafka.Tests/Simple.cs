@@ -61,30 +61,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
             var bootstrapServers = "localhost:9092";
             var topicName = "kafka.spec.simple.test";
 
-            // arrange
-            using var host =
-                Host.CreateDefaultBuilder()
-                    .UseKafka(new KafkaConfig(bootstrapServers, TimeSpan.FromSeconds(10)), typeof(Sample))
-                    .UseAkka("test", string.Empty, c => c.WithOpenTelemetry(), (sp, sys) =>
-                    {
-                        var test = sp.GetRequiredService<GetTestActor>()();
-                        sys.ActorOf(sys.PropsFactory<AggregateActor>().Create(test), "AggregateActor");
-                    })
-                    .UseAkkaWithXUnit2()
-                    .ConfigureServices(services =>
-                    {
-                        services.AddSingleton(new ActivitySource("OnActivity"));
-                        services.AddOpenTelemetryTracing(builder => builder
-                                   .AddSource("OnActivity")
-                                   .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                   .SetSampler(new AlwaysOnSampler())
-                                   .AddZipkinExporter()
-                                   .AddInMemoryExporter(memoryExport));
-                    })
-                    .Build();
-
-            await host.StartAsync();
-
             using (var adminClient = new AdminClientBuilder(new AdminClientConfig
             {
                 BootstrapServers = bootstrapServers
@@ -113,6 +89,30 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
                 });
             }
 
+            // arrange
+            using var host =
+                Host.CreateDefaultBuilder()
+                    .UseKafka(new KafkaConfig(bootstrapServers, TimeSpan.FromSeconds(10)), typeof(Sample))
+                    .UseAkka("test", string.Empty, c => c.WithOpenTelemetry(), (sp, sys) =>
+                    {
+                        var test = sp.GetRequiredService<GetTestActor>()();
+                        sys.ActorOf(sys.PropsFactory<AggregateActor>().Create(test), "AggregateActor");
+                    })
+                    .UseAkkaWithXUnit2()
+                    .ConfigureServices(services =>
+                    {
+                        services.AddSingleton(new ActivitySource("OnActivity"));
+                        services.AddOpenTelemetryTracing(builder => builder
+                                   .AddSource("OnActivity")
+                                   .AddSource("SeungYongShim.Akka.OpenTelemetry")
+                                   .SetSampler(new AlwaysOnSampler())
+                                   .AddZipkinExporter()
+                                   .AddInMemoryExporter(memoryExport));
+                    })
+                    .Build();
+
+            await host.StartAsync();
+
             var sys = host.Services.GetRequiredService<ActorSystem>();
             var test = host.Services.GetRequiredService<TestKit>();
 
@@ -131,7 +131,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
                 memoryExport.Where(x => x.RootId == activity.RootId)
                             .Count()
                             .Should()
-                            .Be(5);
+                            .Be(6);
             }
 
             await host.StopAsync();
