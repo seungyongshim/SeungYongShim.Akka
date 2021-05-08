@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 {
                     Become(Start);
                     Stash.UnstashAll();
+
+                    //throw new Exception();
                 });
             }
 
@@ -79,7 +82,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                                 .AddSource("ActivityOnStash")
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
                                                 .SetSampler(new AlwaysOnSampler())
-                                                .AddOtlpExporter()
+                                                .AddZipkinExporter()
                                                 .AddInMemoryExporter(memoryExport));
                                  })
                                  .UseAkkaWithXUnit2()

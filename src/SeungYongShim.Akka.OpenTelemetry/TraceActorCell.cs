@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
-using OpenTelemetry.Trace;
+using Akka.Event;
 
 namespace SeungYongShim.Akka.OpenTelemetry
 {
@@ -18,6 +18,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
             var ret = message switch
             {
                 IAutoReceivedMessage m => m,
+                LogEvent m => m,
                 var m when Activity.Current is not null => new TraceMessage(Activity.Current.Id, m),
                 _ => message
             };
@@ -33,8 +34,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 message = m.Body;
 
                 using var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, parentId);
-                activity?.AddTag("ActorPath", Self.Path.ToStringWithUid());
-                activity?.AddTag("message", $"{message}");
+                activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
+                activity?.AddTag("actor.message", $"{message}");
 
                 try
                 {
@@ -42,8 +43,13 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 }
                 catch (Exception ex)
                 {
-                    activity?.SetStatus(global::OpenTelemetry.Trace.Status.Error.WithDescription(ex.Message));
-                    activity?.RecordException(ex);
+                    // https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/exceptions.md
+                    activity?.AddTag("exception.type", ex.GetType().Name)
+                             .AddTag("exception.stacktrace", ex.StackTrace)
+                             .AddTag("exception.message", ex.Message)
+                             .AddTag("otel.status_code", "ERROR")
+                             .Dispose();
+
                     throw;
                 }
             }
