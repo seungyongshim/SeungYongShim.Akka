@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
+using OpenTelemetry.Trace;
 
 namespace SeungYongShim.Akka.OpenTelemetry
 {
@@ -41,8 +42,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 }
                 catch (Exception ex)
                 {
-                    activity?.AddTag("Exception", ex)
-                             .AddTag("otel.status_code", "ERROR");
+                    activity?.SetStatus(global::OpenTelemetry.Trace.Status.Error.WithDescription(ex.Message));
+                    activity?.RecordException(ex);
                     throw;
                 }
             }
