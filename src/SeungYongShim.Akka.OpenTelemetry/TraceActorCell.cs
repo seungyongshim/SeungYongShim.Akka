@@ -43,13 +43,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 }
                 catch (Exception ex)
                 {
-                    // https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/exceptions.md
-                    activity?.AddTag("exception.type", ex.GetType().Name)
-                             .AddTag("exception.stacktrace", ex.StackTrace)
-                             .AddTag("exception.message", ex.Message)
-                             .AddTag("otel.status_code", "ERROR")
+                    activity?.AddTagException(ex)
                              .Dispose();
-
                     throw;
                 }
             }

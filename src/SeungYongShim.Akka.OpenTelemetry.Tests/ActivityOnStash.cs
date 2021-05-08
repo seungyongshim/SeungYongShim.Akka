@@ -76,12 +76,12 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  })
                                  .ConfigureServices(services =>
                                  {
-                                     services.AddSingleton(new ActivitySource("ActivityOnStash"));
+                                     services.AddSingleton(ActivitySourceStatic.Instance);
                                      services.AddOpenTelemetryTracing(builder => builder
-                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SeungYongShim.Akka.OpenTelemetry.Tests.ActivityOnStash"))
-                                                .AddSource("ActivityOnStash")
+                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ActivityOnStash"))
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
                                                 .SetSampler(new AlwaysOnSampler())
+                                                //.AddOtlpExporter()
                                                 .AddZipkinExporter()
                                                 .AddInMemoryExporter(memoryExport));
                                  })

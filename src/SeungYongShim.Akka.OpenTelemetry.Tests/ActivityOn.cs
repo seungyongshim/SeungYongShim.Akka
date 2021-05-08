@@ -45,13 +45,13 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  })
                                  .ConfigureServices(services =>
                                  {
-                                     services.AddSingleton(new ActivitySource("OnActivity"));
+                                     services.AddSingleton(ActivitySourceStatic.Instance);
                                      services.AddOpenTelemetryTracing(builder => builder
-                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SeungYongShim.Akka.OpenTelemetry.Tests.ActivityOn"))
-                                                .AddSource("OnActivity")
-                                                .AddSource("SeungYongShim.Akka.OpenTelemetry")
+                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ActivityOn"))
+                                                .AddSource(ActivitySourceStatic.Instance.Name)
                                                 .SetSampler(new AlwaysOnSampler())
-                                                .AddOtlpExporter()
+                                                //.AddOtlpExporter()
+                                                .AddZipkinExporter()
                                                 .AddInMemoryExporter(memoryExport));
                                  })
                                  .UseAkkaWithXUnit2()

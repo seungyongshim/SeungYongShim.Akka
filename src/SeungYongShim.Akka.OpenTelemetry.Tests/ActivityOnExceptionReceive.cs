@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.TestKit.Xunit2;
@@ -15,36 +17,37 @@ using Xunit;
 
 namespace SeungYongShim.Akka.OpenTelemetry.Tests
 {
-    public class ActivityOnAsk
+    public class ActivityOnExceptionReceive
     {
         public class PingActor : ReceiveActor
         {
-            public PingActor() => Receive<Sample>(m => Sender.Tell(m));
+            public PingActor() => Receive<Sample>(m => throw new Exception());
         }
 
-
-        // xunit is not support isolation process test.
-        // https://github.com/xunit/xunit/issues/1044
         [Fact]
-        public async Task Test1()
+        public async Task Receive()
         {
             var memoryExport = new List<Activity>();
 
             using var host = Host.CreateDefaultBuilder()
                                  .UseAkka("test", string.Empty, conf => conf.WithOpenTelemetry(), (sp, sys) =>
                                  {
+                                     var test = sp.GetRequiredService<GetTestActor>()();
+
                                      var ping = sys.ActorOf(sys.PropsFactory<PingActor>()
                                                                .Create(), "PingActor");
                                  })
                                  .ConfigureServices(services =>
-                                     services.AddSingleton(ActivitySourceStatic.Instance)
-                                             .AddOpenTelemetryTracing((builder) => builder
-                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ActivityOnAsk"))
+                                 {
+                                     services.AddSingleton(ActivitySourceStatic.Instance);
+                                     services.AddOpenTelemetryTracing(builder => builder
+                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceive"))
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
                                                 .SetSampler(new AlwaysOnSampler())
                                                 //.AddOtlpExporter()
                                                 .AddZipkinExporter()
-                                                .AddInMemoryExporter(memoryExport)))
+                                                .AddInMemoryExporter(memoryExport));
+                                 })
                                  .UseAkkaWithXUnit2()
                                  .Build();
 
@@ -57,14 +60,18 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 var pingActor = await sys.ActorSelection("/user/PingActor")
                                          .ResolveOne(3.Seconds());
 
-                var ret = await pingActor.Ask<Sample>(new Sample { ID = "1" });
+                pingActor.Tell(new Sample { ID = "1" });
 
-                ret.Should().Be(new Sample { ID = "1" });
-
-                await Task.Delay(300);
-                memoryExport.Where(x => x.RootId == activity.RootId).Count().Should().Be(1);
+                await Task.Delay(100);
+                memoryExport.Where(x => x.RootId == activity.RootId)
+                            .First()
+                            .Tags
+                            .ToDictionary(x => x.Key, x => x.Value)
+                            ["otel.status_code"]
+                            .Should().Be("ERROR");
             }
 
+            await Task.Delay(1000);
             await host.StopAsync();
         }
     }
