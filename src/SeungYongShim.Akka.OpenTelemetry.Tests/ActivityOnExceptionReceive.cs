@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.TestKit.Xunit2;
@@ -11,8 +8,10 @@ using FluentAssertions;
 using FluentAssertions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
+using Serilog;
+using Serilog.Enrichers.ActivityTags;
+using Serilog.Enrichers.Span;
+using Serilog.Sinks.Kafka;
 using SeungYongShim.Akka.DependencyInjection;
 using Xunit;
 
@@ -36,7 +35,11 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
         public async Task Receive()
         {
             using var host = Host.CreateDefaultBuilder()
-                                 .UseAkka("test", string.Empty, conf => conf.WithOpenTelemetry(), (sp, sys) =>
+                                 .UseAkka("test", @"
+                                 akka {
+                                    loggers=[""Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilog""]
+                                    loglevel=DEBUG
+                                 }", conf => conf.WithOpenTelemetry(), (sp, sys) =>
                                  {
                                      var test = sp.GetRequiredService<GetTestActor>()();
 
@@ -48,6 +51,11 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                      services.AddSingleton(ActivitySourceStatic.Instance);
                                  })
                                  .UseAkkaWithXUnit2()
+                                 .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+                                        .MinimumLevel.Debug()
+                                        .Enrich.With<ActivityEnricher>()
+                                        .Enrich.With<ActivityTagsEnricher>()
+                                        .WriteTo.Kafka())
                                  .Build();
 
             await host.StartAsync();

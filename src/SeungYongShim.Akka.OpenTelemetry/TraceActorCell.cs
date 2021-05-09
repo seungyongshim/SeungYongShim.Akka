@@ -43,7 +43,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 }
                 catch (Exception ex)
                 {
-                    activity?.AddTagException(ex)
+                    activity?.AddTagException(ex.Demystify())
                              .Dispose();
                     throw;
                 }

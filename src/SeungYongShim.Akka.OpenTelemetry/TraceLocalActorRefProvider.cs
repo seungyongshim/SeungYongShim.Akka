@@ -1,5 +1,6 @@
 using System;
 using System.Configuration;
+using System.Reflection;
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.Actor.Internal;
@@ -24,6 +25,9 @@ namespace SeungYongShim.Akka.OpenTelemetry
             var rootPath = new RootActorPath(new Address("akka", systemName));
             Log = Logging.GetLogger(eventStream, "TraceLocalActorRefProvider(" + rootPath.Address + ")");
             _localActorRefProvider = new LocalActorRefProvider(systemName, settings, eventStream, deployer, deadLettersFactory);
+
+            Assembly design = Assembly.GetAssembly(typeof(RepointableActorRef));
+            ActorTaskSchedulerMessageType = design.GetType("Akka.Dispatch.SysMsg.ActorTaskSchedulerMessage");
         }
 
         public IInternalActorRef RootGuardian => _localActorRefProvider.RootGuardian;
@@ -71,6 +75,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
         public void UnregisterTempActor(ActorPath path) => _localActorRefProvider.UnregisterTempActor(path);
 
         public ILoggingAdapter Log { get; }
+        public Type ActorTaskSchedulerMessageType { get; }
 
         public IInternalActorRef ActorOf(ActorSystemImpl system, Props props, IInternalActorRef supervisor, ActorPath path, bool systemService, Deploy deploy, bool lookupDeploy, bool async)
         {
@@ -110,8 +115,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                     if (async)
                         return
                             new TraceRepointableActorRef(system, props2, dispatcher,
-                                mailboxType, supervisor,
-                                path).Initialize(async);
+                                mailboxType, supervisor, path, ActorTaskSchedulerMessageType).Initialize(async);
                     return new TraceLocalActorRef(system, props2, dispatcher,
                         mailboxType, supervisor, path);
                 }

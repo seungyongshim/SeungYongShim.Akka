@@ -3,6 +3,7 @@ using Akka.Actor;
 using Akka.Actor.Setup;
 using Akka.Configuration;
 using Akka.DependencyInjection;
+using SeungYongShim.Akka;
 using SeungYongShim.Akka.DependencyInjection.Abstractions;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -15,12 +16,17 @@ namespace Microsoft.Extensions.DependencyInjection
                                                    Func<Config, Config> hoconFunc,
                                                    Action<IServiceProvider, ActorSystem> startAction = null) =>
             services.AddSingleton(sp =>
-                BootstrapSetup.Create()
-                              .WithConfig(hoconFunc(ConfigurationFactory.ParseString(hocon)))
-                              .And(ServiceProviderSetup.Create(sp)))
-                    .AddSingleton<AkkaHostedServiceStart>(sp => sys => startAction?.Invoke(sp, sys))
-                    .AddSingleton(typeof(IPropsFactory<>), typeof(PropsFactory<>))
-                    .AddHostedService<AkkaHostedService>()
-                    .AddSingleton(sp => ActorSystem.Create(actorSystemName, sp.GetService<ActorSystemSetup>()));
+            {
+                return BootstrapSetup.Create()
+                                     .WithConfig(hoconFunc(ConfigurationFactory.ParseString(hocon)))
+                                     .And(ServiceProviderSetup.Create(sp));
+            })
+            .AddSingleton<AkkaHostedServiceStart>(sp => sys =>
+            {
+                startAction?.Invoke(sp, sys);
+            })
+            .AddSingleton(typeof(IPropsFactory<>), typeof(PropsFactory<>))
+            .AddHostedService<AkkaHostedService>()
+            .AddSingleton(sp => ActorSystem.Create(actorSystemName, sp.GetService<ActorSystemSetup>()));
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Reflection;
 using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
@@ -11,13 +10,19 @@ namespace SeungYongShim.Akka.OpenTelemetry
     public class TraceRepointableActorRef : RepointableActorRef
     {
         private MailboxType _mailboxType;
-        Type ActorTaskSchedulerMessageType;
+        private Type ActorTaskSchedulerMessageType;
 
-        public TraceRepointableActorRef(ActorSystemImpl system, Props props, MessageDispatcher dispatcher, MailboxType mailboxType, IInternalActorRef supervisor, ActorPath path) : base(system, props, dispatcher, mailboxType, supervisor, path)
+        public TraceRepointableActorRef(ActorSystemImpl system,
+                                        Props props,
+                                        MessageDispatcher dispatcher,
+                                        MailboxType mailboxType,
+                                        IInternalActorRef supervisor,
+                                        ActorPath path,
+                                        Type actorTaskSchedulerMessageType)
+            : base(system, props, dispatcher, mailboxType, supervisor, path)
         {
             _mailboxType = mailboxType;
-            Assembly design = Assembly.GetAssembly(typeof(RepointableActorRef));
-            ActorTaskSchedulerMessageType = design.GetType("Akka.Dispatch.SysMsg.ActorTaskSchedulerMessage");
+            ActorTaskSchedulerMessageType = actorTaskSchedulerMessageType;
         }
 
         public override void SendSystemMessage(ISystemMessage message)
@@ -28,7 +33,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                                                  .GetValue(message) is Exception ex)
                 {
                     var activity = Activity.Current;
-                    activity?.AddTagException(ex);
+                    activity?.AddTagException(ex.Demystify());
                 }
             }
 
