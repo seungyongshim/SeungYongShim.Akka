@@ -17,18 +17,24 @@ using Xunit;
 
 namespace SeungYongShim.Akka.OpenTelemetry.Tests
 {
-    public class ActivityOnExceptionReceiveAsync
+    public class ActivityOnExceptionReceiveAsync : IClassFixture<ActivityCollectionFixture>
     {
-        public ActivityOnExceptionReceiveAsync()
+        public ActivityOnExceptionReceiveAsync(ActivityCollectionFixture activityCollection)
         {
-            MemoryExport = new List<Activity>();
+            ActivityCollection = activityCollection;
         }
 
         public List<Activity> MemoryExport { get; private set; }
+        public ActivityCollectionFixture ActivityCollection { get; }
 
         public class PingActor : ReceiveActor
         {
-            public PingActor() => ReceiveAsync<Sample>(async m => throw new Exception());
+            private async Task Crash()
+            {
+                await Task.CompletedTask;
+                throw new Exception();
+            }
+            public PingActor() => ReceiveAsync<Sample>(async m => await Crash());
         }
 
         [Fact]
@@ -49,9 +55,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceiveAsync"))
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
                                                 .SetSampler(new AlwaysOnSampler())
-                                                //.AddOtlpExporter()
-                                                .AddZipkinExporter()
-                                                .AddInMemoryExporter(MemoryExport));
+                                                .AddZipkinExporter());
                                  })
                                  .UseAkkaWithXUnit2()
                                  .Build();
@@ -67,16 +71,16 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
 
                 pingActor.Tell(new Sample { ID = "1" });
 
-                await Task.Delay(100);
-                MemoryExport.Where(x => x.RootId == activity.RootId)
-                            .First()
-                            .Tags
-                            .ToDictionary(x => x.Key, x => x.Value)
-                            ["otel.status_code"]
-                            .Should().Be("ERROR");
+                await Task.Delay(1000);
+                ActivityCollection.Activities
+                                  .Where(x => x.RootId == activity.RootId)
+                                  .First()
+                                  .Tags
+                                  .ToDictionary(x => x.Key, x => x.Value)
+                                  ["otel.status_code"]
+                                  .Should().Be("ERROR");
             }
 
-            await Task.Delay(1000);
             await host.StopAsync();
         }
     }

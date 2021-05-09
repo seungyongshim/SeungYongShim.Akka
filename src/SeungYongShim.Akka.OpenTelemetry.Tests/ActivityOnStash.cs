@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -16,8 +17,14 @@ using Xunit;
 
 namespace SeungYongShim.Akka.OpenTelemetry.Tests
 {
-    public class ActivityOnStash
+    public class ActivityOnStash : IClassFixture<ActivityCollectionFixture>
     {
+        public ActivityCollectionFixture ActivityCollection { get; }
+
+        public ActivityOnStash(ActivityCollectionFixture activityCollection)
+        {
+            ActivityCollection = activityCollection;
+        }
         public class StartSend { }
 
         public class PingActor : ReceiveActor, IWithUnboundedStash
@@ -61,7 +68,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
         [Fact]
         public async Task Test1()
         {
-            var memoryExport = new List<Activity>();
+            
 
             using var host = Host.CreateDefaultBuilder()
                                  .UseAkka("test", string.Empty, conf => conf.WithOpenTelemetry(), (sp, sys) =>
@@ -77,13 +84,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  .ConfigureServices(services =>
                                  {
                                      services.AddSingleton(ActivitySourceStatic.Instance);
-                                     services.AddOpenTelemetryTracing(builder => builder
-                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ActivityOnStash"))
-                                                .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                                .SetSampler(new AlwaysOnSampler())
-                                                //.AddOtlpExporter()
-                                                .AddZipkinExporter()
-                                                .AddInMemoryExporter(memoryExport));
                                  })
                                  .UseAkkaWithXUnit2()
                                  .Build();
@@ -103,7 +103,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 test.ExpectMsg<Sample>(3.Seconds()).Should().Be(new Sample { ID = "1" });
 
                 await Task.Delay(300);
-                memoryExport.Where(x => x.RootId == activity.RootId).Count().Should().Be(5);
+                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId).Count().Should().Be(5);
             }
 
             await host.StopAsync();

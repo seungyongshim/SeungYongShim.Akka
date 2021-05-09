@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -17,8 +18,15 @@ using Xunit;
 
 namespace SeungYongShim.Akka.OpenTelemetry.Tests
 {
-    public class ActivityOnExceptionReceive
+    public class ActivityOnExceptionReceive : IClassFixture<ActivityCollectionFixture>
     {
+        public ActivityCollectionFixture ActivityCollection { get; }
+
+        public ActivityOnExceptionReceive(ActivityCollectionFixture activityCollection)
+        {
+            ActivityCollection = activityCollection;
+        }
+
         public class PingActor : ReceiveActor
         {
             public PingActor() => Receive<Sample>(m => throw new Exception());
@@ -27,8 +35,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
         [Fact]
         public async Task Receive()
         {
-            var memoryExport = new List<Activity>();
-
             using var host = Host.CreateDefaultBuilder()
                                  .UseAkka("test", string.Empty, conf => conf.WithOpenTelemetry(), (sp, sys) =>
                                  {
@@ -40,13 +46,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  .ConfigureServices(services =>
                                  {
                                      services.AddSingleton(ActivitySourceStatic.Instance);
-                                     services.AddOpenTelemetryTracing(builder => builder
-                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceive"))
-                                                .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                                .SetSampler(new AlwaysOnSampler())
-                                                //.AddOtlpExporter()
-                                                .AddZipkinExporter()
-                                                .AddInMemoryExporter(memoryExport));
                                  })
                                  .UseAkkaWithXUnit2()
                                  .Build();
@@ -62,13 +61,13 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
 
                 pingActor.Tell(new Sample { ID = "1" });
 
-                await Task.Delay(100);
-                memoryExport.Where(x => x.RootId == activity.RootId)
-                            .First()
-                            .Tags
-                            .ToDictionary(x => x.Key, x => x.Value)
-                            ["otel.status_code"]
-                            .Should().Be("ERROR");
+                await Task.Delay(1000);
+                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId)
+                                             .First()
+                                             .Tags
+                                             .ToDictionary(x => x.Key, x => x.Value)
+                                             ["otel.status_code"]
+                                             .Should().Be("ERROR");
             }
 
             await Task.Delay(1000);

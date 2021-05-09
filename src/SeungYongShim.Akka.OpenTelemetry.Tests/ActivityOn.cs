@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +7,20 @@ using FluentAssertions;
 using FluentAssertions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
 using SeungYongShim.Akka.DependencyInjection;
 using Xunit;
 
 namespace SeungYongShim.Akka.OpenTelemetry.Tests
 {
-    public class ActivityOn
+    public class ActivityOn : IClassFixture<ActivityCollectionFixture>
     {
+        public ActivityCollectionFixture ActivityCollection { get; }
+
+        public ActivityOn(ActivityCollectionFixture activityCollection)
+        {
+            ActivityCollection = activityCollection;
+        }
+
         public class PingActor : ReceiveActor
         {
             public PingActor(IActorRef pong) => Receive<Sample>(m => pong.Tell(m));
@@ -30,8 +34,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
         [Fact]
         public async Task Test1()
         {
-            var memoryExport = new List<Activity>();
-
             using var host = Host.CreateDefaultBuilder()
                                  .UseAkka("test", string.Empty, conf => conf.WithOpenTelemetry(), (sp, sys) =>
                                  {
@@ -46,13 +48,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  .ConfigureServices(services =>
                                  {
                                      services.AddSingleton(ActivitySourceStatic.Instance);
-                                     services.AddOpenTelemetryTracing(builder => builder
-                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ActivityOn"))
-                                                .AddSource(ActivitySourceStatic.Instance.Name)
-                                                .SetSampler(new AlwaysOnSampler())
-                                                //.AddOtlpExporter()
-                                                .AddZipkinExporter()
-                                                .AddInMemoryExporter(memoryExport));
                                  })
                                  .UseAkkaWithXUnit2()
                                  .Build();
@@ -70,9 +65,8 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 test.ExpectMsg<Sample>().Should().Be(new Sample { ID = "1" });
 
                 await Task.Delay(300);
-                memoryExport.Where(x => x.RootId == activity.RootId).Count().Should().Be(3);
+                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId).Count().Should().Be(3);
             }
-
 
             await host.StopAsync();
         }
