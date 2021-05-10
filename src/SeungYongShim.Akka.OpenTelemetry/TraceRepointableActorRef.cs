@@ -4,6 +4,7 @@ using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
 using Akka.Dispatch.SysMsg;
+using System.Reflection;
 
 namespace SeungYongShim.Akka.OpenTelemetry
 {
@@ -32,7 +33,11 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 if (ActorTaskSchedulerMessageType.GetProperty("Exception")?
                                                  .GetValue(message) is Exception ex)
                 {
-                    ActorTaskSchedulerMessageType.GetProperty("Exception")?.SetValue(message, new TraceException(ex));
+                    var m = ActorTaskSchedulerMessageType.GetProperty("Message")?
+                                                         .GetValue(message);
+
+                    message = (ISystemMessage)Activator.CreateInstance(ActorTaskSchedulerMessageType,
+                                                                       new TraceException(ex), m);
                 }
             }
             

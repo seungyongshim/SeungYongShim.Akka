@@ -103,7 +103,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 test.ExpectMsg<Sample>(3.Seconds()).Should().Be(new Sample { ID = "1" });
 
                 await Task.Delay(300);
-                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId).Count().Should().Be(5);
+                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId).Count().Should().Be(6);
             }
 
             await host.StopAsync();

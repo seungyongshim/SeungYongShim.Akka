@@ -78,12 +78,13 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 pingActor.Tell(new Sample { ID = "1" });
 
                 await Task.Delay(1000);
-                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId)
-                                             .First()
-                                             .Tags
-                                             .ToDictionary(x => x.Key, x => x.Value)
-                                             ["otel.status_code"]
-                                             .Should().Be("ERROR");
+                ActivityCollection.Activities
+                                  .Where(x => x.RootId == activity.RootId)
+                                  .SelectMany(x => x.Tags)
+                                  .Where(x => x.Key == "otel.status_code")
+                                  .Select(x => x.Value)
+                                  .First()
+                                  .Should().Be("ERROR");
             }
 
             await Task.Delay(1000);

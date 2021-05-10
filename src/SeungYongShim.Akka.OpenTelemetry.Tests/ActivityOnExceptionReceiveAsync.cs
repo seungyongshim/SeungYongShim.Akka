@@ -27,7 +27,6 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
             ActivityCollection = activityCollection;
         }
 
-        public List<Activity> MemoryExport { get; private set; }
         public ActivityCollectionFixture ActivityCollection { get; }
 
         public class PingActor : ReceiveActor
@@ -62,9 +61,9 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                      services.AddOpenTelemetryTracing(builder => builder
                                                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceiveAsync"))
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                                .SetSampler(new AlwaysOnSampler())
-                                                .AddOtlpExporter()
-                                                .AddZipkinExporter());
+                                                //.AddOtlpExporter()
+                                                //.AddZipkinExporter()
+                                                .SetSampler(new AlwaysOnSampler()));
                                  })
                                  .UseAkkaWithXUnit2()
                                  .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
@@ -88,10 +87,10 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 await Task.Delay(1000);
                 ActivityCollection.Activities
                                   .Where(x => x.RootId == activity.RootId)
+                                  .SelectMany(x => x.Tags)
+                                  .Where(x => x.Key == "otel.status_code")
+                                  .Select(x => x.Value)
                                   .First()
-                                  .Tags
-                                  .ToDictionary(x => x.Key, x => x.Value)
-                                  ["otel.status_code"]
                                   .Should().Be("ERROR");
             }
 

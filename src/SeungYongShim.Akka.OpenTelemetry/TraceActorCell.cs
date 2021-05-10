@@ -30,31 +30,41 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
         protected override void ReceiveMessage(object message)
         {
-            if (message is TraceMessage m)
+            switch (message)
             {
-                var parentId = m.ActivityId;
-                message = m.Body;
+                case Error m when m.Cause is TraceException x:
+                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, x.ActivityId))
+                    {
+                        activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
+                        activity?.AddTagException(x.InnerException?.Demystify());
 
-                using var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, parentId);
-                var activityId = activity?.Id;
-                activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
-                activity?.AddTag("actor.message", $"{message}");
-
-                try
-                {
-                    if (message is IAutoReceivedMessage)
-                        base.AutoReceiveMessage(new Envelope(message, Sender));
-                    else
                         base.ReceiveMessage(message);
-                }
-                catch (Exception ex)
-                {
-                    throw new TraceException(ex, activityId);
-                }
-            }
-            else
-            {
-                base.ReceiveMessage(message);
+                    }
+                    return;
+                case TraceMessage m:
+                    message = m.Body;
+                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, m.ActivityId))
+                    {
+                        var activityId = activity?.Id;
+                        activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
+                        activity?.AddTag("actor.message", $"{message}");
+
+                        try
+                        {
+                            if (message is IAutoReceivedMessage)
+                                base.AutoReceiveMessage(new Envelope(message, Sender));
+                            else
+                                base.ReceiveMessage(message);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new TraceException(ex, activityId);
+                        }
+                    }
+                    return;
+                default:
+                    base.ReceiveMessage(message);
+                    return;
             }
         }
     }

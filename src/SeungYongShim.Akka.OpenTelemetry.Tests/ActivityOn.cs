@@ -65,7 +65,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 test.ExpectMsg<Sample>().Should().Be(new Sample { ID = "1" });
 
                 await Task.Delay(300);
-                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId).Count().Should().Be(3);
+                ActivityCollection.Activities.Where(x => x.RootId == activity.RootId).Count().Should().Be(4);
             }
 
             await host.StopAsync();
