@@ -3,16 +3,23 @@ version: '2.1'
 services:
   zoo1:
     image: zookeeper:3.4.9
-    hostname: zoo1
     ports:
       - "2181:2181"
     environment:
       ZOO_MY_ID: 1
       ZOO_PORT: 2181
       ZOO_SERVERS: server.1=zoo1:2888:3888
+    healthcheck:
+      test: nc -z localhost 2181 || exit -1
+      interval: 10s
+      timeout: 5s
+      retries: 3 
+      start_period: 10s     
   kafka1:
     image: confluentinc/cp-kafka:5.5.3
-    hostname: kafka1
+    depends_on:
+      zoo1:
+        condition: service_healthy    
     ports:
       - "9092:9092"
     environment:
@@ -24,5 +31,4 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    depends_on:
-      - zoo1
+  

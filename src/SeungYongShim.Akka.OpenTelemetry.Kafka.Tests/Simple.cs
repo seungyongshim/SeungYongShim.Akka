@@ -133,7 +133,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
                 memoryExport.Where(x => x.RootId == activity.RootId)
                             .Count()
                             .Should()
-                            .Be(6);
+                            .Be(7);
             }
 
             await host.StopAsync();
