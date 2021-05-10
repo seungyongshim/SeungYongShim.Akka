@@ -18,6 +18,15 @@ exporters:
   jaeger:
     endpoint: jaeger-all-in-one:14250
     insecure: true    
+
+  elastic:
+    apm_server_url: "http://apm-server:8200"
+
+  kafka:
+    brokers:
+      - kafka1:19092
+    protocol_version: 2.0.0
+
 processors:
   batch:
 
@@ -34,7 +43,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging, zipkin, jaeger]
+      exporters: [logging, zipkin, jaeger, elastic]
     metrics:
       receivers: [otlp]
       processors: [batch]
@@ -42,4 +51,4 @@ service:
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [logging, kafka]

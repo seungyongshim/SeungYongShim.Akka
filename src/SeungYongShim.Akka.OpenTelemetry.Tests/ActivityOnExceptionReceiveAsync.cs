@@ -63,9 +63,8 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceiveAsync"))
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
                                                 .SetSampler(new AlwaysOnSampler())
-                                                .AddOtlpExporter(option => option.Endpoint = new Uri("http://localhost:8200"))
-                                                .AddZipkinExporter()
-                                                .AddJaegerExporter());
+                                                .AddOtlpExporter()
+                                                .AddZipkinExporter());
                                  })
                                  .UseAkkaWithXUnit2()
                                  .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration

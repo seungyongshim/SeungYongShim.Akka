@@ -8,6 +8,8 @@ using FluentAssertions;
 using FluentAssertions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Serilog;
 using Serilog.Enrichers.ActivityTags;
 using Serilog.Enrichers.Span;
@@ -49,6 +51,12 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                  .ConfigureServices(services =>
                                  {
                                      services.AddSingleton(ActivitySourceStatic.Instance);
+                                     services.AddOpenTelemetryTracing(builder => builder
+                                                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceive"))
+                                                .AddSource("SeungYongShim.Akka.OpenTelemetry")
+                                                .SetSampler(new AlwaysOnSampler())
+                                                .AddOtlpExporter()
+                                                .AddZipkinExporter());
                                  })
                                  .UseAkkaWithXUnit2()
                                  .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration

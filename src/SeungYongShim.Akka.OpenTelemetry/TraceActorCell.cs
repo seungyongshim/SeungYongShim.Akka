@@ -1,9 +1,10 @@
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
-using Akka.Event;
+using Akka.Dispatch.SysMsg;
 
 namespace SeungYongShim.Akka.OpenTelemetry
 {
@@ -17,8 +18,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
         {
             var ret = message switch
             {
-                IAutoReceivedMessage m => m,
-                LogEvent m => m,
+                //IAutoReceivedMessage m => m,
+                //LogEvent m => m,
                 var m when Activity.Current is not null => new TraceMessage(Activity.Current.Id, m),
                 _ => message
             };
@@ -39,13 +40,16 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
                 try
                 {
-                    base.ReceiveMessage(message);
+                    if (message is IAutoReceivedMessage)
+                        base.AutoReceiveMessage(new Envelope(message, Sender));
+                    else
+                        base.ReceiveMessage(message);
                 }
                 catch (Exception ex)
                 {
                     activity?.AddTagException(ex.Demystify())
                              .Dispose();
-                    throw;
+                    throw new TraceException(ex);
                 }
             }
             else

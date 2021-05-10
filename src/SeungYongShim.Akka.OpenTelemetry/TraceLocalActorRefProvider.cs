@@ -26,8 +26,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
             Log = Logging.GetLogger(eventStream, "TraceLocalActorRefProvider(" + rootPath.Address + ")");
             _localActorRefProvider = new LocalActorRefProvider(systemName, settings, eventStream, deployer, deadLettersFactory);
 
-            Assembly design = Assembly.GetAssembly(typeof(RepointableActorRef));
-            ActorTaskSchedulerMessageType = design.GetType("Akka.Dispatch.SysMsg.ActorTaskSchedulerMessage");
+            var design = Assembly.GetAssembly(typeof(RepointableActorRef));
+            ActorTaskSchedulerMessageType = design?.GetType("Akka.Dispatch.SysMsg.ActorTaskSchedulerMessage");
         }
 
         public IInternalActorRef RootGuardian => _localActorRefProvider.RootGuardian;
