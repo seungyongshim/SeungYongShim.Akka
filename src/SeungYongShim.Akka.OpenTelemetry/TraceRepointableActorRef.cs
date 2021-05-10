@@ -25,8 +25,6 @@ namespace SeungYongShim.Akka.OpenTelemetry
             ActorTaskSchedulerMessageType = actorTaskSchedulerMessageType;
         }
 
-
-
         public override void SendSystemMessage(ISystemMessage message)
         {
             if (ActorTaskSchedulerMessageType.IsInstanceOfType(message))
@@ -34,13 +32,9 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 if (ActorTaskSchedulerMessageType.GetProperty("Exception")?
                                                  .GetValue(message) is Exception ex)
                 {
-                    var activity = Activity.Current;
-                    activity?.AddTagException(ex.Demystify());
-
                     ActorTaskSchedulerMessageType.GetProperty("Exception")?.SetValue(message, new TraceException(ex));
                 }
             }
-
             
             base.SendSystemMessage(message);
         }

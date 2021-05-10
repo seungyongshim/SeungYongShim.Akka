@@ -5,6 +5,7 @@ using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
 using Akka.Dispatch.SysMsg;
+using Akka.Event;
 
 namespace SeungYongShim.Akka.OpenTelemetry
 {
@@ -19,7 +20,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
             var ret = message switch
             {
                 //IAutoReceivedMessage m => m,
-                //LogEvent m => m,
+                LogEvent m => m,
                 var m when Activity.Current is not null => new TraceMessage(Activity.Current.Id, m),
                 _ => message
             };
@@ -35,6 +36,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 message = m.Body;
 
                 using var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, parentId);
+                var activityId = activity?.Id;
                 activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
                 activity?.AddTag("actor.message", $"{message}");
 
@@ -47,9 +49,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 }
                 catch (Exception ex)
                 {
-                    activity?.AddTagException(ex.Demystify())
-                             .Dispose();
-                    throw new TraceException(ex);
+                    throw new TraceException(ex, activityId);
                 }
             }
             else
