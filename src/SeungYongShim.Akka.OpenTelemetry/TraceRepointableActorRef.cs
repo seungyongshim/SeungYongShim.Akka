@@ -26,6 +26,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
             ActorTaskSchedulerMessageType = actorTaskSchedulerMessageType;
         }
 
+        public TraceActorCell TraceActorCell { get; private set; }
+
         public override void SendSystemMessage(ISystemMessage message)
         {
             if (ActorTaskSchedulerMessageType.IsInstanceOfType(message))
@@ -38,7 +40,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
                     message = (ISystemMessage)Activator.CreateInstance(ActorTaskSchedulerMessageType,
                                                                        new TraceException(ex), m);
-
+                    TraceActorCell.ActivityNew = Activity.Current?.Id;
                 }
             }
             
@@ -47,9 +49,9 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
         protected override ActorCell NewCell()
         {
-            var actorCell = new TraceActorCell(System, this, Props, Dispatcher, Supervisor);
-            actorCell.Init(false, _mailboxType);
-            return actorCell;
+            TraceActorCell = new TraceActorCell(System, this, Props, Dispatcher, Supervisor);
+            TraceActorCell.Init(false, _mailboxType);
+            return TraceActorCell;
         }
     }
 }

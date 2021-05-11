@@ -11,7 +11,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
 {
     public class TraceActorCell : ActorCell
     {
-        public string ActivityNew { get; private set; }
+        internal string ActivityNew { get; set; }
         public TraceActorCell(ActorSystemImpl system, IInternalActorRef self, Props props, MessageDispatcher dispatcher, IInternalActorRef parent) : base(system, self, props, dispatcher, parent)
         {
             ActivityNew = Activity.Current?.Id;
@@ -32,10 +32,15 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
         protected override ActorBase CreateNewActorInstance()
         {
-            using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@Create", ActivityKind.Internal, ActivityNew))
+            if (ActivityNew is not null)
             {
-                return base.CreateNewActorInstance();
+                using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@Create", ActivityKind.Internal, ActivityNew))
+                {
+                    return base.CreateNewActorInstance();
+                }
             }
+            else
+                return base.CreateNewActorInstance();
         }
 
         protected override void ReceiveMessage(object message)

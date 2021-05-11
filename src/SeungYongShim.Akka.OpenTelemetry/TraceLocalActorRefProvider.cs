@@ -117,7 +117,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                             new TraceRepointableActorRef(system, props2, dispatcher,
                                 mailboxType, supervisor, path, ActorTaskSchedulerMessageType).Initialize(async);
                     return new TraceLocalActorRef(system, props2, dispatcher,
-                        mailboxType, supervisor, path);
+                        mailboxType, supervisor, path, ActorTaskSchedulerMessageType);
                 }
                 catch (Exception ex)
                 {

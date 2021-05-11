@@ -29,7 +29,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
 
         public ActivityCollectionFixture ActivityCollection { get; }
 
-        public class PingActor : ReceiveActor
+        public class PongActor : ReceiveActor
         {
             private async Task Crash()
             {
@@ -37,7 +37,19 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                 throw new Exception();
             }
 
-            public PingActor() => ReceiveAsync<Sample>(async m => await Crash());
+            public PongActor() => ReceiveAsync<Sample>(async m => await Crash());
+        }
+
+        public class PingActor : ReceiveActor
+        {
+            public PingActor()
+            {
+                Receive<Sample>(m =>
+                {
+                    var child = Context.ActorOf(Context.PropsFactory<PongActor>().Create());
+                    child.Tell(m);
+                });
+            }
         }
 
         [Fact]
@@ -61,8 +73,8 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
                                      services.AddOpenTelemetryTracing(builder => builder
                                                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ExceptionReceiveAsync"))
                                                 .AddSource("SeungYongShim.Akka.OpenTelemetry")
-                                                //.AddOtlpExporter()
-                                                //.AddZipkinExporter()
+                                                .AddOtlpExporter()
+                                                .AddZipkinExporter()
                                                 .SetSampler(new AlwaysOnSampler()));
                                  })
                                  .UseAkkaWithXUnit2()
