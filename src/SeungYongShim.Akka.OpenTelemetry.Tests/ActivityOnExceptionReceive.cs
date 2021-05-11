@@ -28,9 +28,24 @@ namespace SeungYongShim.Akka.OpenTelemetry.Tests
             ActivityCollection = activityCollection;
         }
 
+        public class PongActor : ReceiveActor
+        {
+            public PongActor()
+            {
+                Receive<Sample>(m => throw new Exception());
+            }
+        }
+
         public class PingActor : ReceiveActor
         {
-            public PingActor() => Receive<Sample>(m => throw new Exception());
+            public PingActor()
+            {
+                Receive<Sample>(m =>
+                {
+                    var child = Context.ActorOf(Context.PropsFactory<PongActor>().Create());
+                    child.Tell(m);
+                });
+            }
         }
 
         [Fact]

@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
+using Akka.Dispatch.SysMsg;
 
 namespace SeungYongShim.Akka.OpenTelemetry
 {
@@ -11,9 +13,15 @@ namespace SeungYongShim.Akka.OpenTelemetry
         {
         }
 
+        public override void SendSystemMessage(ISystemMessage message) => base.SendSystemMessage(message);
+
         protected override ActorCell NewActorCell(ActorSystemImpl system, IInternalActorRef self, Props props,
             MessageDispatcher dispatcher, IInternalActorRef supervisor)
         {
+            if (Activity.Current is not null)
+            {
+
+            }
             return new TraceActorCell(system, self, props, dispatcher, supervisor);
         }
     }

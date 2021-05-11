@@ -11,8 +11,10 @@ namespace SeungYongShim.Akka.OpenTelemetry
 {
     public class TraceActorCell : ActorCell
     {
+        public string ActivityNew { get; private set; }
         public TraceActorCell(ActorSystemImpl system, IInternalActorRef self, Props props, MessageDispatcher dispatcher, IInternalActorRef parent) : base(system, self, props, dispatcher, parent)
         {
+            ActivityNew = Activity.Current?.Id;
         }
 
         public override void SendMessage(IActorRef sender, object message)
@@ -28,12 +30,20 @@ namespace SeungYongShim.Akka.OpenTelemetry
             base.SendMessage(sender, ret);
         }
 
+        protected override ActorBase CreateNewActorInstance()
+        {
+            using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@Create", ActivityKind.Internal, ActivityNew))
+            {
+                return base.CreateNewActorInstance();
+            }
+        }
+
         protected override void ReceiveMessage(object message)
         {
             switch (message)
             {
                 case Error m when m.Cause is TraceException x:
-                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, x.ActivityId))
+                    using (var activity = ActivitySourceStatic.Instance.StartActivity("Exception", ActivityKind.Internal, x.ActivityId))
                     {
                         activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
                         activity?.AddTagException(x.InnerException?.Demystify());
@@ -43,7 +53,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                     return;
                 case TraceMessage m:
                     message = m.Body;
-                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path.ToString()}@{message.GetType().Name}", ActivityKind.Internal, m.ActivityId))
+                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@{message.GetType().Name}", ActivityKind.Internal, m.ActivityId))
                     {
                         var activityId = activity?.Id;
                         activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
@@ -58,6 +68,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                         }
                         catch (Exception ex)
                         {
+                            ActivityNew = activityId;
                             throw new TraceException(ex, activityId);
                         }
                     }
