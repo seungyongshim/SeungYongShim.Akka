@@ -1,10 +1,8 @@
 using System;
 using System.Diagnostics;
-using System.Reflection;
 using Akka.Actor;
 using Akka.Actor.Internal;
 using Akka.Dispatch;
-using Akka.Dispatch.SysMsg;
 using Akka.Event;
 
 namespace SeungYongShim.Akka.OpenTelemetry
@@ -12,10 +10,8 @@ namespace SeungYongShim.Akka.OpenTelemetry
     public class TraceActorCell : ActorCell
     {
         internal string ActivityNew { get; set; }
-        public TraceActorCell(ActorSystemImpl system, IInternalActorRef self, Props props, MessageDispatcher dispatcher, IInternalActorRef parent) : base(system, self, props, dispatcher, parent)
-        {
-            ActivityNew = Activity.Current?.Id;
-        }
+
+        public TraceActorCell(ActorSystemImpl system, IInternalActorRef self, Props props, MessageDispatcher dispatcher, IInternalActorRef parent) : base(system, self, props, dispatcher, parent) => ActivityNew = Activity.Current?.Id;
 
         public override void SendMessage(IActorRef sender, object message)
         {
@@ -40,7 +36,9 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 }
             }
             else
+            {
                 return base.CreateNewActorInstance();
+            }
         }
 
         protected override void ReceiveMessage(object message)
@@ -50,18 +48,21 @@ namespace SeungYongShim.Akka.OpenTelemetry
                 case Error m when m.Cause is TraceException x:
                     using (var activity = ActivitySourceStatic.Instance.StartActivity("Exception", ActivityKind.Internal, x.ActivityId))
                     {
-                        activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
+                        activity?.AddTag("actor.path", Self.Path);
                         activity?.AddTagException(x.InnerException?.Demystify());
 
                         base.ReceiveMessage(message);
                     }
                     return;
+
                 case TraceMessage m:
                     message = m.Body;
-                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@{message.GetType().Name}", ActivityKind.Internal, m.ActivityId))
+                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@{message.GetType().FullName}", ActivityKind.Internal, m.ActivityId))
                     {
                         var activityId = activity?.Id;
-                        activity?.AddTag("actor.path", Self.Path.ToStringWithUid());
+                        activity?.AddTag("actor.path", Self.Path);
+                        activity?.AddTag("actor.library", Props.Type.Assembly.GetName().Name);
+                        activity?.AddTag("actor.type", Props.Type.Name);
                         activity?.AddTag("actor.message", $"{message}");
 
                         try
@@ -78,6 +79,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                         }
                     }
                     return;
+
                 default:
                     base.ReceiveMessage(message);
                     return;
