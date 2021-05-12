@@ -93,7 +93,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
             // arrange
             using var host =
                 Host.CreateDefaultBuilder()
-                    .UseKafka(new KafkaConfig(bootstrapServers, TimeSpan.FromSeconds(10)), typeof(Sample))
+                    .UseKafka(new KafkaConfig(bootstrapServers, TimeSpan.FromSeconds(10)))
                     .UseAkka("test", string.Empty, c => c.WithOpenTelemetry(), (sp, sys) =>
                     {
                         var test = sp.GetRequiredService<GetTestActor>()();
