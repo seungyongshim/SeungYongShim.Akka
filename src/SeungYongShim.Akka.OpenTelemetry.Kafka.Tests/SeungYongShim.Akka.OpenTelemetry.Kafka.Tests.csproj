@@ -21,7 +21,7 @@
     <PackageReference Include="OpenTelemetry.Exporter.InMemory" Version="1.1.0-beta2" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.1.0-beta2" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc4" />
-    <PackageReference Include="SeungYongShim.Kafka.DependencyInjection" Version="1.3.0" />
+    <PackageReference Include="SeungYongShim.Kafka.DependencyInjection" Version="2.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
