@@ -1,0 +1,1521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage line-rate="0.65970409051349" branch-rate="0.45625" lines-covered="758" lines-valid="1149" branches-covered="292" branches-valid="640" complexity="580" version="0" timestamp="1623917684">
+  <sources />
+  <packages>
+    <package name="Ben.Demystifier" line-rate="0.5949820788530465" branch-rate="0.4444444444444444" complexity="447">
+      <classes>
+        <class name="System.Collections.Generic.Enumerable.EnumerableIList" filename="/_/src/Ben.Demystifier/Enumerable/EnumerableIList.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="Create" signature="(System.Collections.Generic.IList`1&lt;T&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Collections.Generic.Enumerable.EnumerableIList`1" filename="/_/src/Ben.Demystifier/Enumerable/EnumerableIList.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name=".ctor" signature="(System.Collections.Generic.IList`1&lt;T&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetEnumerator" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="op_Implicit" signature="(System.Collections.Generic.List`1&lt;T&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="op_Implicit" signature="(T[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Item" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Item" signature="(System.Int32,T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Count" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsReadOnly" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Add" signature="(T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Clear" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="Contains" signature="(T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="CopyTo" signature="(T[],System.Int32)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IndexOf" signature="(T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Insert" signature="(System.Int32,T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Remove" signature="(T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="RemoveAt" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="System.Collections.IEnumerable.GetEnumerator" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Collections.Generic.Enumerable.EnumeratorIList`1" filename="/_/src/Ben.Demystifier/Enumerable/EnumeratorIList.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name=".ctor" signature="(System.Collections.Generic.IList`1&lt;T&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Current" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines />
+            </method>
+            <method name="Dispose" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="em.Collections.IEnumerator.get_Current" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Reset" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" filename="/_/src/Ben.Demystifier/obj/Release/netstandard2.1/NuGet/F1129751F543DBBD745A73D3D87C082F642D3D0F/Nullable/1.3.0/Nullable/MemberNotNullAttribute.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".ctor" signature="(System.String[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute" filename="/_/src/Ben.Demystifier/obj/Release/netstandard2.1/NuGet/F1129751F543DBBD745A73D3D87C082F642D3D0F/Nullable/1.3.0/Nullable/MemberNotNullWhenAttribute.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(System.Boolean,System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".ctor" signature="(System.Boolean,System.String[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.EnhancedStackFrame" filename="/_/src/Ben.Demystifier/EnhancedStackFrame.cs" line-rate="1" branch-rate="1" complexity="7">
+          <methods>
+            <method name="IsRecursive" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsRecursive" signature="(System.Boolean)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".ctor" signature="(System.Diagnostics.StackFrame,System.Diagnostics.ResolvedMethod,System.String,System.Int32,System.Int32)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsEquivalent" signature="(System.Diagnostics.ResolvedMethod,System.String,System.Int32,System.Int32)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetFileColumnNumber" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="GetFileLineNumber" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="GetFileName" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="GetILOffset" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="GetMethod" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="GetNativeOffset" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="ToString" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.EnhancedStackTrace" filename="/_/src/Ben.Demystifier/EnhancedStackTrace.cs" line-rate="1" branch-rate="1" complexity="8">
+          <methods>
+            <method name="Current" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name=".ctor" signature="(System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".ctor" signature="(System.Diagnostics.StackTrace)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="FrameCount" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetFrame" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetFrames" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="ToString" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines />
+            </method>
+            <method name="Append" signature="(System.Text.StringBuilder)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetEnumerator" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="System.Collections.Generic.IEnumerable&lt;System.Diagnostics.EnhancedStackFrame&gt;.GetEnumerator" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="System.Collections.IEnumerable.GetEnumerator" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="TryGetFullPath" signature="(System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.EnhancedStackTrace" filename="/_/src/Ben.Demystifier/EnhancedStackTrace.Frames.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="GetFrames" signature="(System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetFrames" signature="(System.Diagnostics.StackTrace)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetMethodDisplayString" signature="(System.Reflection.MethodBase)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsFSharpAsync" signature="(System.Reflection.MethodBase)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="TryResolveGeneratedName" signature="(System.Reflection.MethodBase&amp;,System.Type&amp;,System.String&amp;,System.String&amp;,System.Diagnostics.EnhancedStackTrace/GeneratedNameKind&amp;,System.Nullable`1&lt;System.Int32&gt;&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="TryResolveSourceMethod" signature="(System.Collections.Generic.IEnumerable`1&lt;System.Reflection.MethodBase&gt;,System.Diagnostics.EnhancedStackTrace/GeneratedNameKind,System.String,System.Reflection.MethodBase&amp;,System.Type&amp;,System.Nullable`1&lt;System.Int32&gt;&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetOrdinal" signature="(System.Reflection.MethodBase,System.Nullable`1&lt;System.Int32&gt;&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetMatchHint" signature="(System.Diagnostics.EnhancedStackTrace/GeneratedNameKind,System.Reflection.MethodBase)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="TryParseGeneratedName" signature="(System.String,System.Diagnostics.EnhancedStackTrace/GeneratedNameKind&amp;,System.Int32&amp;,System.Int32&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IndexOfBalancedParenthesis" signature="(System.String,System.Int32,System.Char)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetPrefix" signature="(System.Reflection.ParameterInfo)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetParameter" signature="(System.Reflection.ParameterInfo)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetValueTupleParameter" signature="(System.Collections.Generic.IList`1&lt;System.String&gt;,System.String,System.String,System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetValueTupleParameterName" signature="(System.Collections.Generic.IList`1&lt;System.String&gt;,System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ShowInStackTrace" signature="(System.Reflection.MethodBase)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsStackTraceHidden" signature="(System.Reflection.MemberInfo)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="TryResolveStateMachineMethod" signature="(System.Reflection.MethodBase&amp;,System.Type&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.ExceptionExtensions" filename="/_/src/Ben.Demystifier/ExceptionExtensions.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="SetStackTracesString" signature="(System.Exception,System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Demystify" signature="(T)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ToStringDemystified" signature="(System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.Internal.ILReader" filename="/_/src/Ben.Demystifier/Internal/ILReader.cs" line-rate="1" branch-rate="1" complexity="9">
+          <methods>
+            <method name=".ctor" signature="(System.Byte[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Read" signature="(System.Reflection.MethodBase)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ReadOpCode" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines />
+            </method>
+            <method name="ReadOperand" signature="(System.Reflection.Emit.OpCode,System.Reflection.MethodBase)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ReadByte" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="ReadInt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines />
+            </method>
+            <method name="GetOpCodeFields" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.Internal.PortablePdbReader" filename="/_/src/Ben.Demystifier/Internal/PortablePdbReader.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="PopulateStackFrame" signature="(System.Diagnostics.StackFrame,System.Reflection.MethodBase,System.Int32,System.String&amp;,System.Int32&amp;,System.Int32&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetMetadataReader" signature="(System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetPdbPath" signature="(System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsPortable" signature="(System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Dispose" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines />
+            </method>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.Internal.ReflectionHelper" filename="/_/src/Ben.Demystifier/Internal/ReflectionHelper.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="IsValueTuple" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="IsTupleElementNameAttribue" signature="(System.Attribute)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetTransformerNames" signature="(System.Attribute)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetTransformNamesPropertyInfo" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.ResolvedMethod" filename="/_/src/Ben.Demystifier/ResolvedMethod.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="IsSequentialEquivalent" signature="(System.Diagnostics.ResolvedMethod)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ToString" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="Append" signature="(System.Text.StringBuilder)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="Append" signature="(System.Text.StringBuilder,System.Boolean)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="AppendDeclaringTypeName" signature="(System.Text.StringBuilder,System.Boolean)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.ResolvedParameter" filename="/_/src/Ben.Demystifier/ResolvedParameter.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ToString" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name="Append" signature="(System.Text.StringBuilder)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="AppendTypeName" signature="(System.Text.StringBuilder)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.StringBuilderExtentions" filename="/_/src/Ben.Demystifier/StringBuilderExtentions.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="AppendDemystified" signature="(System.Text.StringBuilder,System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="AppendInnerException" signature="(System.Text.StringBuilder,System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.TypeNameHelper" filename="/_/src/Ben.Demystifier/TypeNameHelper.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="GetTypeDisplayName" signature="(System.Type,System.Boolean,System.Boolean)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="AppendTypeDisplayName" signature="(System.Text.StringBuilder,System.Type,System.Boolean,System.Boolean)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="GetTypeNameForGenericType" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ProcessType" signature="(System.Text.StringBuilder,System.Type,System.Diagnostics.TypeNameHelper/DisplayNameOptions)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ProcessArrayType" signature="(System.Text.StringBuilder,System.Type,System.Diagnostics.TypeNameHelper/DisplayNameOptions)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="ProcessGenericType" signature="(System.Text.StringBuilder,System.Type,System.Type[],System.Int32,System.Diagnostics.TypeNameHelper/DisplayNameOptions)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+            <method name=".ctor" signature="(System.Boolean,System.Boolean)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="System.Diagnostics.ValueTupleResolvedParameter" filename="/_/src/Ben.Demystifier/ValueTupleResolvedParameter.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(System.Type,System.Collections.Generic.IList`1&lt;System.String&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="AppendTypeName" signature="(System.Text.StringBuilder)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+            <method name="AppendValueTupleParameterName" signature="(System.Text.StringBuilder,System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="ThisAssembly" filename="/_/src/Ben.Demystifier/obj/Release/netstandard2.1/Ben.Demystifier.Version.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+      </classes>
+    </package>
+    <package name="SeungYongShim.Akka.DependencyInjection" line-rate="0.9736842105263158" branch-rate="0.5" complexity="15">
+      <classes>
+        <class name="Akka.Configuration.UtilExtensions" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection/UtilExtensions.cs" line-rate="0" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="WithFallback" signature="(Akka.Configuration.Config,System.String)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="6" hits="0" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="Akka.DependencyInjection.PropsFactory`1" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection/PropsFactory.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(Akka.Actor.ActorSystem)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="8" hits="30" branch="false" />
+              </lines>
+            </method>
+            <method name="Create" signature="(System.Object[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="13" hits="15" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="30" branch="false" />
+            <line number="13" hits="15" branch="false" />
+          </lines>
+        </class>
+        <class name="Microsoft.Extensions.DependencyInjection.AddAkkaExtensions" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection/AddAkkaExtensions.cs" line-rate="1" branch-rate="0.5" complexity="NaN">
+          <methods>
+            <method name="AddAkka" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Func`2&lt;Akka.Configuration.Config,Akka.Configuration.Config&gt;,System.Action`2&lt;System.IServiceProvider,Akka.Actor.ActorSystem&gt;)" line-rate="1" branch-rate="0.5" complexity="NaN">
+              <lines>
+                <line number="18" hits="8" branch="false" />
+                <line number="19" hits="16" branch="false" />
+                <line number="20" hits="16" branch="false" />
+                <line number="21" hits="16" branch="false" />
+                <line number="22" hits="16" branch="false" />
+                <line number="23" hits="16" branch="false" />
+                <line number="24" hits="16" branch="false" />
+                <line number="25" hits="24" branch="false" />
+                <line number="26" hits="24" branch="true" condition-coverage="50% (1/2)" />
+                <line number="27" hits="24" branch="false" />
+                <line number="28" hits="8" branch="false" />
+                <line number="29" hits="8" branch="false" />
+                <line number="30" hits="9" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="8" branch="false" />
+            <line number="19" hits="16" branch="false" />
+            <line number="20" hits="16" branch="false" />
+            <line number="21" hits="16" branch="false" />
+            <line number="22" hits="16" branch="false" />
+            <line number="23" hits="16" branch="false" />
+            <line number="24" hits="16" branch="false" />
+            <line number="25" hits="24" branch="false" />
+            <line number="26" hits="24" branch="true" condition-coverage="50% (1/2)" />
+            <line number="27" hits="24" branch="false" />
+            <line number="28" hits="8" branch="false" />
+            <line number="29" hits="8" branch="false" />
+            <line number="30" hits="9" branch="false" />
+          </lines>
+        </class>
+        <class name="Microsoft.Extensions.DependencyInjection.AkkaHostedService" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection/AkkaHostedService.cs" line-rate="1" branch-rate="1" complexity="3">
+          <methods>
+            <method name=".ctor" signature="(System.IServiceProvider,Akka.Actor.ActorSystem,Microsoft.Extensions.DependencyInjection.AkkaHostedServiceStart)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="13" hits="8" branch="false" />
+                <line number="14" hits="8" branch="false" />
+                <line number="15" hits="8" branch="false" />
+                <line number="16" hits="8" branch="false" />
+                <line number="17" hits="8" branch="false" />
+                <line number="18" hits="8" branch="false" />
+              </lines>
+            </method>
+            <method name="StopAsync" signature="(System.Threading.CancellationToken)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="32" hits="8" branch="false" />
+                <line number="33" hits="8" branch="false" />
+                <line number="34" hits="8" branch="false" />
+                <line number="35" hits="8" branch="false" />
+                <line number="36" hits="8" branch="false" />
+                <line number="38" hits="8" branch="false" />
+                <line number="39" hits="8" branch="false" />
+              </lines>
+            </method>
+            <method name="StartAsync" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines>
+                <line number="25" hits="8" branch="false" />
+                <line number="26" hits="8" branch="false" />
+                <line number="28" hits="8" branch="false" />
+                <line number="29" hits="8" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="8" branch="false" />
+            <line number="14" hits="8" branch="false" />
+            <line number="15" hits="8" branch="false" />
+            <line number="16" hits="8" branch="false" />
+            <line number="17" hits="8" branch="false" />
+            <line number="18" hits="8" branch="false" />
+            <line number="25" hits="8" branch="false" />
+            <line number="26" hits="8" branch="false" />
+            <line number="28" hits="8" branch="false" />
+            <line number="29" hits="8" branch="false" />
+            <line number="32" hits="8" branch="false" />
+            <line number="33" hits="8" branch="false" />
+            <line number="34" hits="8" branch="false" />
+            <line number="35" hits="8" branch="false" />
+            <line number="36" hits="8" branch="false" />
+            <line number="38" hits="8" branch="false" />
+            <line number="39" hits="8" branch="false" />
+          </lines>
+        </class>
+        <class name="Microsoft.Extensions.Hosting.UseAkkaExtensions" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection/UseAkkaExtensions.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="UseAkka" signature="(Microsoft.Extensions.Hosting.IHostBuilder,System.String,System.String,System.Func`2&lt;Akka.Configuration.Config,Akka.Configuration.Config&gt;,System.Action`2&lt;System.IServiceProvider,Akka.Actor.ActorSystem&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="18" hits="8" branch="false" />
+                <line number="19" hits="16" branch="false" />
+              </lines>
+            </method>
+            <method name="UseAkka" signature="(Microsoft.Extensions.Hosting.IHostBuilder,System.String,System.String,System.Action`2&lt;System.IServiceProvider,Akka.Actor.ActorSystem&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="25" hits="4" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="8" branch="false" />
+            <line number="19" hits="16" branch="false" />
+            <line number="25" hits="4" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.DependencyInjection.ServiceProviderExtension" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection/ServiceProviderExtension.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="PropsFactory" signature="(Akka.Actor.ActorSystem)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="12" hits="10" branch="false" />
+              </lines>
+            </method>
+            <method name="PropsFactory" signature="(Akka.Actor.IUntypedActorContext)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="15" hits="6" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="10" branch="false" />
+            <line number="15" hits="6" branch="false" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="SeungYongShim.Akka.DependencyInjection.XUnit2" line-rate="0.8260869565217391" branch-rate="1" complexity="14">
+      <classes>
+        <class name="Microsoft.Extensions.DependencyInjection.UseAkkaTestKitExtensions" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection.XUnit2/UseAkkaExtensions.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="UseAkkaWithXUnit2" signature="(Microsoft.Extensions.Hosting.IHostBuilder)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="19" hits="6" branch="false" />
+              </lines>
+            </method>
+            <method name="UseAkkaWithXUnit2" signature="(Microsoft.Extensions.Hosting.IHostBuilder,System.Type[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="23" hits="7" branch="false" />
+                <line number="24" hits="14" branch="false" />
+              </lines>
+            </method>
+            <method name="AddAkkaTestKit" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.IEnumerable`1&lt;System.Type&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="27" hits="7" branch="false" />
+                <line number="28" hits="14" branch="false" />
+                <line number="29" hits="19" branch="false" />
+                <line number="30" hits="14" branch="false" />
+                <line number="32" hits="8" branch="false" />
+                <line number="33" hits="8" branch="false" />
+                <line number="35" hits="7" branch="false" />
+                <line number="36" hits="7" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="6" branch="false" />
+            <line number="23" hits="7" branch="false" />
+            <line number="24" hits="14" branch="false" />
+            <line number="27" hits="7" branch="false" />
+            <line number="28" hits="14" branch="false" />
+            <line number="29" hits="19" branch="false" />
+            <line number="30" hits="14" branch="false" />
+            <line number="32" hits="8" branch="false" />
+            <line number="33" hits="8" branch="false" />
+            <line number="35" hits="7" branch="false" />
+            <line number="36" hits="7" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.DependencyInjection.FakeActor" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection.XUnit2/TestKit.cs" line-rate="0.6" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(System.IServiceProvider)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="22" hits="3" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.IServiceProvider,System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="23" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.IServiceProvider,System.Object,System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="24" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.IServiceProvider,System.Object,System.Object,System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="25" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.IServiceProvider,System.Object,System.Object,System.Object,System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="26" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.IServiceProvider,System.Object[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="27" hits="1" branch="false" />
+                <line number="28" hits="1" branch="false" />
+                <line number="29" hits="1" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="3" branch="false" />
+            <line number="23" hits="0" branch="false" />
+            <line number="24" hits="0" branch="false" />
+            <line number="25" hits="0" branch="false" />
+            <line number="26" hits="0" branch="false" />
+            <line number="27" hits="1" branch="false" />
+            <line number="28" hits="1" branch="false" />
+            <line number="29" hits="1" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="31" hits="1" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.DependencyInjection.FakePropsFactory`1" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.DependencyInjection.XUnit2/TestKit.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(Akka.Actor.ActorSystem)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="12" hits="2" branch="false" />
+              </lines>
+            </method>
+            <method name="Create" signature="(System.Object[])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="17" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="2" branch="false" />
+            <line number="17" hits="1" branch="false" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="SeungYongShim.Akka.OpenTelemetry" line-rate="0.817258883248731" branch-rate="0.6136363636363636" complexity="87">
+      <classes>
+        <class name="Microsoft.Extensions.Hosting.HoconConfigExtensions" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/HoconConfigExtension.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="WithOpenTelemetry" signature="(Akka.Configuration.Config)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="12" hits="6" branch="false" />
+                <line number="13" hits="6" branch="false" />
+                <line number="14" hits="6" branch="false" />
+                <line number="15" hits="6" branch="false" />
+                <line number="16" hits="6" branch="false" />
+                <line number="17" hits="6" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="6" branch="false" />
+            <line number="13" hits="6" branch="false" />
+            <line number="14" hits="6" branch="false" />
+            <line number="15" hits="6" branch="false" />
+            <line number="16" hits="6" branch="false" />
+            <line number="17" hits="6" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.ActivityExtension" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/ActivityExtension.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name="AddTagException" signature="(System.Diagnostics.Activity,System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="12" hits="2" branch="false" />
+                <line number="13" hits="2" branch="false" />
+                <line number="14" hits="2" branch="false" />
+                <line number="15" hits="2" branch="false" />
+                <line number="16" hits="2" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="2" branch="false" />
+            <line number="13" hits="2" branch="false" />
+            <line number="14" hits="2" branch="false" />
+            <line number="15" hits="2" branch="false" />
+            <line number="16" hits="2" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.ActivitySourceStatic" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/ActivitySourceStatic.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="2" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="2" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.TraceActorCell" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/TraceActorCell.cs" line-rate="1" branch-rate="0.6923076923076923" complexity="3">
+          <methods>
+            <method name=".ctor" signature="(Akka.Actor.Internal.ActorSystemImpl,Akka.Actor.IInternalActorRef,Akka.Actor.Props,Akka.Dispatch.MessageDispatcher,Akka.Actor.IInternalActorRef)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="14" hits="72" branch="false" />
+              </lines>
+            </method>
+            <method name="SendMessage" signature="(Akka.Actor.IActorRef,System.Object)" line-rate="1" branch-rate="0.75" complexity="NaN">
+              <lines>
+                <line number="17" hits="64" branch="false" />
+                <line number="18" hits="64" branch="true" condition-coverage="75% (3/4)" />
+                <line number="19" hits="64" branch="false" />
+                <line number="20" hits="64" branch="false" />
+                <line number="21" hits="100" branch="false" />
+                <line number="22" hits="114" branch="true" condition-coverage="100% (2/2)" />
+                <line number="23" hits="70" branch="true" condition-coverage="50% (1/2)" />
+                <line number="24" hits="64" branch="false" />
+                <line number="26" hits="64" branch="false" />
+                <line number="27" hits="64" branch="false" />
+              </lines>
+            </method>
+            <method name="CreateNewActorInstance" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines>
+                <line number="30" hits="38" branch="false" />
+                <line number="31" hits="38" branch="false" />
+                <line number="32" hits="4" branch="false" />
+                <line number="33" hits="4" branch="false" />
+                <line number="34" hits="4" branch="false" />
+                <line number="35" hits="4" branch="false" />
+                <line number="39" hits="34" branch="false" />
+                <line number="40" hits="34" branch="false" />
+                <line number="42" hits="38" branch="false" />
+              </lines>
+            </method>
+            <method name="ReceiveMessage" signature="(System.Object)" line-rate="1" branch-rate="0.6666666666666666" complexity="NaN">
+              <lines>
+                <line number="45" hits="63" branch="false" />
+                <line number="46" hits="63" branch="true" condition-coverage="100% (4/4)" />
+                <line number="48" hits="2" branch="true" condition-coverage="50% (1/2)" />
+                <line number="49" hits="2" branch="false" />
+                <line number="50" hits="2" branch="false" />
+                <line number="51" hits="2" branch="true" condition-coverage="50% (1/2)" />
+                <line number="52" hits="2" branch="true" condition-coverage="50% (1/2)" />
+                <line number="54" hits="2" branch="false" />
+                <line number="55" hits="2" branch="false" />
+                <line number="56" hits="2" branch="false" />
+                <line number="59" hits="23" branch="false" />
+                <line number="60" hits="23" branch="false" />
+                <line number="61" hits="23" branch="false" />
+                <line number="62" hits="23" branch="false" />
+                <line number="63" hits="23" branch="true" condition-coverage="50% (1/2)" />
+                <line number="64" hits="23" branch="true" condition-coverage="50% (1/2)" />
+                <line number="65" hits="23" branch="true" condition-coverage="50% (1/2)" />
+                <line number="66" hits="23" branch="false" />
+                <line number="69" hits="23" branch="false" />
+                <line number="70" hits="23" branch="true" condition-coverage="100% (2/2)" />
+                <line number="71" hits="6" branch="false" />
+                <line number="73" hits="17" branch="false" />
+                <line number="74" hits="22" branch="false" />
+                <line number="75" hits="1" branch="false" />
+                <line number="76" hits="1" branch="false" />
+                <line number="77" hits="1" branch="false" />
+                <line number="78" hits="1" branch="false" />
+                <line number="80" hits="22" branch="false" />
+                <line number="81" hits="22" branch="false" />
+                <line number="84" hits="38" branch="false" />
+                <line number="85" hits="38" branch="false" />
+                <line number="87" hits="62" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="72" branch="false" />
+            <line number="17" hits="64" branch="false" />
+            <line number="18" hits="64" branch="true" condition-coverage="75% (3/4)" />
+            <line number="19" hits="64" branch="false" />
+            <line number="20" hits="64" branch="false" />
+            <line number="21" hits="100" branch="false" />
+            <line number="22" hits="114" branch="true" condition-coverage="100% (2/2)" />
+            <line number="23" hits="70" branch="true" condition-coverage="50% (1/2)" />
+            <line number="24" hits="64" branch="false" />
+            <line number="26" hits="64" branch="false" />
+            <line number="27" hits="64" branch="false" />
+            <line number="30" hits="38" branch="false" />
+            <line number="31" hits="38" branch="false" />
+            <line number="32" hits="4" branch="false" />
+            <line number="33" hits="4" branch="false" />
+            <line number="34" hits="4" branch="false" />
+            <line number="35" hits="4" branch="false" />
+            <line number="39" hits="34" branch="false" />
+            <line number="40" hits="34" branch="false" />
+            <line number="42" hits="38" branch="false" />
+            <line number="45" hits="63" branch="false" />
+            <line number="46" hits="63" branch="true" condition-coverage="100% (4/4)" />
+            <line number="48" hits="2" branch="true" condition-coverage="50% (1/2)" />
+            <line number="49" hits="2" branch="false" />
+            <line number="50" hits="2" branch="false" />
+            <line number="51" hits="2" branch="true" condition-coverage="50% (1/2)" />
+            <line number="52" hits="2" branch="true" condition-coverage="50% (1/2)" />
+            <line number="54" hits="2" branch="false" />
+            <line number="55" hits="2" branch="false" />
+            <line number="56" hits="2" branch="false" />
+            <line number="59" hits="23" branch="false" />
+            <line number="60" hits="23" branch="false" />
+            <line number="61" hits="23" branch="false" />
+            <line number="62" hits="23" branch="false" />
+            <line number="63" hits="23" branch="true" condition-coverage="50% (1/2)" />
+            <line number="64" hits="23" branch="true" condition-coverage="50% (1/2)" />
+            <line number="65" hits="23" branch="true" condition-coverage="50% (1/2)" />
+            <line number="66" hits="23" branch="false" />
+            <line number="69" hits="23" branch="false" />
+            <line number="70" hits="23" branch="true" condition-coverage="100% (2/2)" />
+            <line number="71" hits="6" branch="false" />
+            <line number="73" hits="17" branch="false" />
+            <line number="74" hits="22" branch="false" />
+            <line number="75" hits="1" branch="false" />
+            <line number="76" hits="1" branch="false" />
+            <line number="77" hits="1" branch="false" />
+            <line number="78" hits="1" branch="false" />
+            <line number="80" hits="22" branch="false" />
+            <line number="81" hits="22" branch="false" />
+            <line number="84" hits="38" branch="false" />
+            <line number="85" hits="38" branch="false" />
+            <line number="87" hits="62" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.TraceException" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/TraceException.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(System.Exception)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="8" hits="1" branch="false" />
+                <line number="9" hits="1" branch="false" />
+                <line number="11" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Exception,System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="13" hits="2" branch="false" />
+                <line number="14" hits="2" branch="false" />
+                <line number="15" hits="2" branch="false" />
+                <line number="16" hits="2" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="1" branch="false" />
+            <line number="9" hits="1" branch="false" />
+            <line number="11" hits="1" branch="false" />
+            <line number="13" hits="2" branch="false" />
+            <line number="14" hits="2" branch="false" />
+            <line number="15" hits="2" branch="false" />
+            <line number="16" hits="2" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.TraceLocalActorRef" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/TraceLocalActorRef.cs" line-rate="1" branch-rate="0.5" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(Akka.Actor.Internal.ActorSystemImpl,Akka.Actor.Props,Akka.Dispatch.MessageDispatcher,Akka.Dispatch.MailboxType,Akka.Actor.IInternalActorRef,Akka.Actor.ActorPath,System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="19" hits="4" branch="false" />
+                <line number="20" hits="4" branch="false" />
+                <line number="21" hits="4" branch="false" />
+                <line number="22" hits="4" branch="false" />
+              </lines>
+            </method>
+            <method name="SendSystemMessage" signature="(Akka.Dispatch.SysMsg.ISystemMessage)" line-rate="1" branch-rate="0.5" complexity="NaN">
+              <lines>
+                <line number="28" hits="1" branch="false" />
+                <line number="29" hits="1" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="1" branch="true" condition-coverage="50% (1/2)" />
+                <line number="32" hits="1" branch="false" />
+                <line number="33" hits="1" branch="false" />
+                <line number="34" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="41" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
+                <line number="44" hits="1" branch="false" />
+                <line number="45" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="NewActorCell" signature="(Akka.Actor.Internal.ActorSystemImpl,Akka.Actor.IInternalActorRef,Akka.Actor.Props,Akka.Dispatch.MessageDispatcher,Akka.Actor.IInternalActorRef)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="49" hits="4" branch="false" />
+                <line number="50" hits="4" branch="false" />
+                <line number="51" hits="4" branch="false" />
+                <line number="52" hits="4" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="4" branch="false" />
+            <line number="20" hits="4" branch="false" />
+            <line number="21" hits="4" branch="false" />
+            <line number="22" hits="4" branch="false" />
+            <line number="28" hits="1" branch="false" />
+            <line number="29" hits="1" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="31" hits="1" branch="true" condition-coverage="50% (1/2)" />
+            <line number="32" hits="1" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="34" hits="1" branch="false" />
+            <line number="35" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="41" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="45" hits="1" branch="false" />
+            <line number="49" hits="4" branch="false" />
+            <line number="50" hits="4" branch="false" />
+            <line number="51" hits="4" branch="false" />
+            <line number="52" hits="4" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.TraceLocalActorRefProvider" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/TraceLocalActorRefProvider.cs" line-rate="0.6527777777777778" branch-rate="0.5714285714285714" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(System.String,Akka.Actor.Settings,Akka.Event.EventStream)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="19" hits="6" branch="false" />
+                <line number="20" hits="6" branch="false" />
+                <line number="21" hits="6" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,Akka.Actor.Settings,Akka.Event.EventStream,Akka.Actor.Deployer,System.Func`2&lt;Akka.Actor.ActorPath,Akka.Actor.IInternalActorRef&gt;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="23" hits="6" branch="false" />
+                <line number="24" hits="6" branch="false" />
+                <line number="25" hits="6" branch="false" />
+                <line number="26" hits="6" branch="false" />
+                <line number="27" hits="6" branch="false" />
+                <line number="29" hits="6" branch="false" />
+                <line number="30" hits="6" branch="false" />
+                <line number="31" hits="6" branch="false" />
+              </lines>
+            </method>
+            <method name="RootGuardian" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="33" hits="24" branch="false" />
+              </lines>
+            </method>
+            <method name="Guardian" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="35" hits="20" branch="false" />
+              </lines>
+            </method>
+            <method name="SystemGuardian" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="37" hits="36" branch="false" />
+              </lines>
+            </method>
+            <method name="DeadLetters" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="39" hits="93" branch="false" />
+              </lines>
+            </method>
+            <method name="IgnoreRef" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="41" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="RootPath" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="43" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Settings" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="45" hits="39" branch="false" />
+              </lines>
+            </method>
+            <method name="Deployer" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="47" hits="36" branch="false" />
+              </lines>
+            </method>
+            <method name="TempContainer" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="49" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="TerminationTask" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="51" hits="6" branch="false" />
+              </lines>
+            </method>
+            <method name="DefaultAddress" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="53" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="SerializationInformation" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="55" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetExternalAddressFor" signature="(Akka.Actor.Address)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="57" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Init" signature="(Akka.Actor.Internal.ActorSystemImpl)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="60" hits="6" branch="false" />
+                <line number="61" hits="6" branch="false" />
+                <line number="62" hits="6" branch="false" />
+                <line number="63" hits="6" branch="false" />
+              </lines>
+            </method>
+            <method name="RegisterTempActor" signature="(Akka.Actor.IInternalActorRef,Akka.Actor.ActorPath)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="65" hits="15" branch="false" />
+              </lines>
+            </method>
+            <method name="ResolveActorRef" signature="(System.String)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="67" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="ResolveActorRef" signature="(Akka.Actor.ActorPath)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="69" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="RootGuardianAt" signature="(Akka.Actor.Address)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="71" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="TempPath" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="73" hits="15" branch="false" />
+              </lines>
+            </method>
+            <method name="UnregisterTempActor" signature="(Akka.Actor.ActorPath)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="75" hits="14" branch="false" />
+              </lines>
+            </method>
+            <method name="ActorOf" signature="(Akka.Actor.Internal.ActorSystemImpl,Akka.Actor.Props,Akka.Actor.IInternalActorRef,Akka.Actor.ActorPath,System.Boolean,Akka.Actor.Deploy,System.Boolean,System.Boolean)" line-rate="0.5789473684210527" branch-rate="0.5714285714285714" complexity="NaN">
+              <lines>
+                <line number="81" hits="36" branch="false" />
+                <line number="82" hits="36" branch="false" />
+                <line number="83" hits="36" branch="false" />
+                <line number="84" hits="36" branch="true" condition-coverage="50% (1/2)" />
+                <line number="85" hits="0" branch="false" />
+                <line number="86" hits="0" branch="false" />
+                <line number="87" hits="0" branch="true" condition-coverage="0% (0/2)" />
+                <line number="88" hits="0" branch="false" />
+                <line number="89" hits="0" branch="false" />
+                <line number="90" hits="0" branch="false" />
+                <line number="92" hits="36" branch="false" />
+                <line number="95" hits="36" branch="false" />
+                <line number="96" hits="36" branch="true" condition-coverage="100% (2/2)" />
+                <line number="97" hits="24" branch="false" />
+                <line number="98" hits="24" branch="true" condition-coverage="50% (1/2)" />
+                <line number="99" hits="0" branch="false" />
+                <line number="100" hits="24" branch="true" condition-coverage="50% (1/2)" />
+                <line number="101" hits="0" branch="false" />
+                <line number="102" hits="24" branch="false" />
+                <line number="104" hits="36" branch="true" condition-coverage="50% (1/2)" />
+                <line number="105" hits="0" branch="false" />
+                <line number="106" hits="0" branch="false" />
+                <line number="110" hits="36" branch="false" />
+                <line number="112" hits="36" branch="false" />
+                <line number="113" hits="36" branch="false" />
+                <line number="115" hits="36" branch="true" condition-coverage="100% (2/2)" />
+                <line number="116" hits="32" branch="false" />
+                <line number="117" hits="32" branch="false" />
+                <line number="118" hits="32" branch="false" />
+                <line number="119" hits="4" branch="false" />
+                <line number="120" hits="4" branch="false" />
+                <line number="122" hits="0" branch="false" />
+                <line number="123" hits="0" branch="false" />
+                <line number="124" hits="0" branch="false" />
+                <line number="125" hits="0" branch="false" />
+                <line number="129" hits="0" branch="false" />
+                <line number="130" hits="0" branch="false" />
+                <line number="132" hits="36" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="6" branch="false" />
+            <line number="20" hits="6" branch="false" />
+            <line number="21" hits="6" branch="false" />
+            <line number="23" hits="6" branch="false" />
+            <line number="24" hits="6" branch="false" />
+            <line number="25" hits="6" branch="false" />
+            <line number="26" hits="6" branch="false" />
+            <line number="27" hits="6" branch="false" />
+            <line number="29" hits="6" branch="false" />
+            <line number="30" hits="6" branch="false" />
+            <line number="31" hits="6" branch="false" />
+            <line number="33" hits="24" branch="false" />
+            <line number="35" hits="20" branch="false" />
+            <line number="37" hits="36" branch="false" />
+            <line number="39" hits="93" branch="false" />
+            <line number="41" hits="0" branch="false" />
+            <line number="43" hits="0" branch="false" />
+            <line number="45" hits="39" branch="false" />
+            <line number="47" hits="36" branch="false" />
+            <line number="49" hits="0" branch="false" />
+            <line number="51" hits="6" branch="false" />
+            <line number="53" hits="0" branch="false" />
+            <line number="55" hits="0" branch="false" />
+            <line number="57" hits="0" branch="false" />
+            <line number="60" hits="6" branch="false" />
+            <line number="61" hits="6" branch="false" />
+            <line number="62" hits="6" branch="false" />
+            <line number="63" hits="6" branch="false" />
+            <line number="65" hits="15" branch="false" />
+            <line number="67" hits="0" branch="false" />
+            <line number="69" hits="0" branch="false" />
+            <line number="71" hits="0" branch="false" />
+            <line number="73" hits="15" branch="false" />
+            <line number="75" hits="14" branch="false" />
+            <line number="81" hits="36" branch="false" />
+            <line number="82" hits="36" branch="false" />
+            <line number="83" hits="36" branch="false" />
+            <line number="84" hits="36" branch="true" condition-coverage="50% (1/2)" />
+            <line number="85" hits="0" branch="false" />
+            <line number="86" hits="0" branch="false" />
+            <line number="87" hits="0" branch="true" condition-coverage="0% (0/2)" />
+            <line number="88" hits="0" branch="false" />
+            <line number="89" hits="0" branch="false" />
+            <line number="90" hits="0" branch="false" />
+            <line number="92" hits="36" branch="false" />
+            <line number="95" hits="36" branch="false" />
+            <line number="96" hits="36" branch="true" condition-coverage="100% (2/2)" />
+            <line number="97" hits="24" branch="false" />
+            <line number="98" hits="24" branch="true" condition-coverage="50% (1/2)" />
+            <line number="99" hits="0" branch="false" />
+            <line number="100" hits="24" branch="true" condition-coverage="50% (1/2)" />
+            <line number="101" hits="0" branch="false" />
+            <line number="102" hits="24" branch="false" />
+            <line number="104" hits="36" branch="true" condition-coverage="50% (1/2)" />
+            <line number="105" hits="0" branch="false" />
+            <line number="106" hits="0" branch="false" />
+            <line number="110" hits="36" branch="false" />
+            <line number="112" hits="36" branch="false" />
+            <line number="113" hits="36" branch="false" />
+            <line number="115" hits="36" branch="true" condition-coverage="100% (2/2)" />
+            <line number="116" hits="32" branch="false" />
+            <line number="117" hits="32" branch="false" />
+            <line number="118" hits="32" branch="false" />
+            <line number="119" hits="4" branch="false" />
+            <line number="120" hits="4" branch="false" />
+            <line number="122" hits="0" branch="false" />
+            <line number="123" hits="0" branch="false" />
+            <line number="124" hits="0" branch="false" />
+            <line number="125" hits="0" branch="false" />
+            <line number="129" hits="0" branch="false" />
+            <line number="130" hits="0" branch="false" />
+            <line number="132" hits="36" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.TraceMessage" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/Messages/TraceMessage.cs" line-rate="1" branch-rate="1" complexity="NaN">
+          <methods>
+            <method name=".ctor" signature="(System.String,System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="5" hits="66" branch="false" />
+                <line number="6" hits="22" branch="false" />
+                <line number="7" hits="22" branch="false" />
+                <line number="8" hits="22" branch="false" />
+                <line number="9" hits="22" branch="false" />
+                <line number="10" hits="22" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Diagnostics.Activity,System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="8" hits="22" branch="false" />
+                <line number="9" hits="22" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="66" branch="false" />
+            <line number="6" hits="22" branch="false" />
+            <line number="7" hits="22" branch="false" />
+            <line number="8" hits="22" branch="false" />
+            <line number="9" hits="22" branch="false" />
+            <line number="10" hits="22" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.TraceRepointableActorRef" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry/TraceRepointableActorRef.cs" line-rate="0.56" branch-rate="0" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(Akka.Actor.Internal.ActorSystemImpl,Akka.Actor.Props,Akka.Dispatch.MessageDispatcher,Akka.Dispatch.MailboxType,Akka.Actor.IInternalActorRef,Akka.Actor.ActorPath,System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="23" hits="32" branch="false" />
+                <line number="24" hits="32" branch="false" />
+                <line number="25" hits="32" branch="false" />
+                <line number="26" hits="32" branch="false" />
+                <line number="27" hits="32" branch="false" />
+              </lines>
+            </method>
+            <method name="SendSystemMessage" signature="(Akka.Dispatch.SysMsg.ISystemMessage)" line-rate="0.26666666666666666" branch-rate="0" complexity="NaN">
+              <lines>
+                <line number="32" hits="10" branch="false" />
+                <line number="33" hits="10" branch="false" />
+                <line number="34" hits="0" branch="false" />
+                <line number="35" hits="0" branch="true" condition-coverage="0% (0/2)" />
+                <line number="36" hits="0" branch="false" />
+                <line number="37" hits="0" branch="false" />
+                <line number="38" hits="0" branch="false" />
+                <line number="39" hits="0" branch="false" />
+                <line number="41" hits="0" branch="false" />
+                <line number="42" hits="0" branch="false" />
+                <line number="43" hits="0" branch="false" />
+                <line number="44" hits="0" branch="false" />
+                <line number="45" hits="0" branch="false" />
+                <line number="47" hits="10" branch="false" />
+                <line number="48" hits="10" branch="false" />
+              </lines>
+            </method>
+            <method name="NewCell" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="51" hits="32" branch="false" />
+                <line number="52" hits="32" branch="false" />
+                <line number="53" hits="32" branch="false" />
+                <line number="54" hits="32" branch="false" />
+                <line number="55" hits="32" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="23" hits="32" branch="false" />
+            <line number="24" hits="32" branch="false" />
+            <line number="25" hits="32" branch="false" />
+            <line number="26" hits="32" branch="false" />
+            <line number="27" hits="32" branch="false" />
+            <line number="32" hits="10" branch="false" />
+            <line number="33" hits="10" branch="false" />
+            <line number="34" hits="0" branch="false" />
+            <line number="35" hits="0" branch="true" condition-coverage="0% (0/2)" />
+            <line number="36" hits="0" branch="false" />
+            <line number="37" hits="0" branch="false" />
+            <line number="38" hits="0" branch="false" />
+            <line number="39" hits="0" branch="false" />
+            <line number="41" hits="0" branch="false" />
+            <line number="42" hits="0" branch="false" />
+            <line number="43" hits="0" branch="false" />
+            <line number="44" hits="0" branch="false" />
+            <line number="45" hits="0" branch="false" />
+            <line number="47" hits="10" branch="false" />
+            <line number="48" hits="10" branch="false" />
+            <line number="51" hits="32" branch="false" />
+            <line number="52" hits="32" branch="false" />
+            <line number="53" hits="32" branch="false" />
+            <line number="54" hits="32" branch="false" />
+            <line number="55" hits="32" branch="false" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="SeungYongShim.Akka.OpenTelemetry.Kafka" line-rate="0.7962962962962963" branch-rate="1" complexity="17">
+      <classes>
+        <class name="SeungYongShim.Akka.OpenTelemetry.Kafka.KafkaConsumerActor" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry.Kafka/KafkaConsumerActor.cs" line-rate="0.76" branch-rate="1" complexity="5">
+          <methods>
+            <method name=".ctor" signature="(SeungYongShim.Kafka.KafkaConsumer,System.Collections.Generic.IList`1&lt;System.String&gt;,System.String,Akka.Actor.IActorRef)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="10" hits="1" branch="false" />
+                <line number="11" hits="1" branch="false" />
+                <line number="12" hits="1" branch="false" />
+                <line number="13" hits="1" branch="false" />
+                <line number="14" hits="1" branch="false" />
+                <line number="15" hits="1" branch="false" />
+                <line number="16" hits="1" branch="false" />
+                <line number="18" hits="2" branch="false" />
+                <line number="20" hits="1" branch="false" />
+                <line number="21" hits="2" branch="false" />
+                <line number="22" hits="2" branch="false" />
+                <line number="23" hits="1" branch="false" />
+                <line number="24" hits="1" branch="false" />
+                <line number="25" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="PostStop" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="1" branch="false" />
+                <line number="32" hits="1" branch="false" />
+                <line number="33" hits="1" branch="false" />
+                <line number="34" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="PreRestart" signature="(System.Exception,System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="37" hits="0" branch="false" />
+                <line number="38" hits="0" branch="false" />
+                <line number="39" hits="0" branch="false" />
+                <line number="40" hits="0" branch="false" />
+                <line number="41" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="43" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="&gt;c__DisplayClass0_0/&lt;&lt;-ctor" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines>
+                <line number="21" hits="2" branch="false" />
+                <line number="22" hits="2" branch="false" />
+                <line number="23" hits="1" branch="false" />
+                <line number="24" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="1" branch="false" />
+            <line number="11" hits="1" branch="false" />
+            <line number="12" hits="1" branch="false" />
+            <line number="13" hits="1" branch="false" />
+            <line number="14" hits="1" branch="false" />
+            <line number="15" hits="1" branch="false" />
+            <line number="16" hits="1" branch="false" />
+            <line number="18" hits="2" branch="false" />
+            <line number="20" hits="1" branch="false" />
+            <line number="21" hits="2" branch="false" />
+            <line number="22" hits="2" branch="false" />
+            <line number="23" hits="1" branch="false" />
+            <line number="24" hits="1" branch="false" />
+            <line number="25" hits="1" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="31" hits="1" branch="false" />
+            <line number="32" hits="1" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="34" hits="1" branch="false" />
+            <line number="37" hits="0" branch="false" />
+            <line number="38" hits="0" branch="false" />
+            <line number="39" hits="0" branch="false" />
+            <line number="40" hits="0" branch="false" />
+            <line number="41" hits="0" branch="false" />
+            <line number="43" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="SeungYongShim.Akka.OpenTelemetry.Kafka.KafkaProducerActor" filename="/home/runner/work/SeungYongShim.Akka/SeungYongShim.Akka/src/SeungYongShim.Akka.OpenTelemetry.Kafka/KafkaProducerActor.cs" line-rate="0.8275862068965517" branch-rate="1" complexity="6">
+          <methods>
+            <method name=".ctor" signature="(SeungYongShim.Kafka.KafkaProducer)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="14" hits="1" branch="false" />
+                <line number="15" hits="1" branch="false" />
+                <line number="16" hits="1" branch="false" />
+                <line number="18" hits="1" branch="false" />
+                <line number="19" hits="2" branch="false" />
+                <line number="20" hits="2" branch="false" />
+                <line number="21" hits="1" branch="false" />
+                <line number="22" hits="1" branch="false" />
+                <line number="23" hits="2" branch="false" />
+                <line number="24" hits="2" branch="false" />
+                <line number="25" hits="2" branch="false" />
+                <line number="26" hits="2" branch="false" />
+                <line number="27" hits="1" branch="false" />
+                <line number="28" hits="1" branch="false" />
+                <line number="29" hits="1" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="2" branch="false" />
+                <line number="32" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="PostStop" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="35" hits="1" branch="false" />
+                <line number="36" hits="1" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="PreRestart" signature="(System.Exception,System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="41" hits="0" branch="false" />
+                <line number="42" hits="0" branch="false" />
+                <line number="43" hits="0" branch="false" />
+                <line number="44" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Google.Protobuf.IMessage,System.String,System.String)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="10" hits="4" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Exception)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="12" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="&gt;c__DisplayClass3_0/&lt;&lt;-ctor" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="19" hits="2" branch="false" />
+                <line number="20" hits="2" branch="false" />
+                <line number="21" hits="1" branch="false" />
+                <line number="22" hits="1" branch="false" />
+                <line number="23" hits="2" branch="false" />
+                <line number="24" hits="2" branch="false" />
+                <line number="25" hits="2" branch="false" />
+                <line number="26" hits="2" branch="false" />
+                <line number="27" hits="1" branch="false" />
+                <line number="28" hits="1" branch="false" />
+                <line number="29" hits="1" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="2" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="4" branch="false" />
+            <line number="11" hits="1" branch="false" />
+            <line number="12" hits="0" branch="false" />
+            <line number="14" hits="1" branch="false" />
+            <line number="15" hits="1" branch="false" />
+            <line number="16" hits="1" branch="false" />
+            <line number="18" hits="1" branch="false" />
+            <line number="19" hits="2" branch="false" />
+            <line number="20" hits="2" branch="false" />
+            <line number="21" hits="1" branch="false" />
+            <line number="22" hits="1" branch="false" />
+            <line number="23" hits="2" branch="false" />
+            <line number="24" hits="2" branch="false" />
+            <line number="25" hits="2" branch="false" />
+            <line number="26" hits="2" branch="false" />
+            <line number="27" hits="1" branch="false" />
+            <line number="28" hits="1" branch="false" />
+            <line number="29" hits="1" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="31" hits="2" branch="false" />
+            <line number="32" hits="1" branch="false" />
+            <line number="35" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="41" hits="0" branch="false" />
+            <line number="42" hits="0" branch="false" />
+            <line number="43" hits="0" branch="false" />
+            <line number="44" hits="0" branch="false" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
