@@ -13,7 +13,8 @@ namespace SeungYongShim.Akka.DependencyInjection
 
         public ActorSystem ActorSystem { get; }
 
-        public Props Create(params object[] args) => ServiceProvider.For(ActorSystem).Props<FakeActor>(args);
+        public Props Create(params object[] args) =>
+            DependencyResolver.For(ActorSystem).Props<FakeActor>(args);
     }
 
     internal class FakeActor : ReceiveActor

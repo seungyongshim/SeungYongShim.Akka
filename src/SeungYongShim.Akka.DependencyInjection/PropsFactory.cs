@@ -9,6 +9,7 @@ namespace Akka.DependencyInjection
 
         public ActorSystem ActorSystem { get; }
 
-        public Props Create(params object [] args) => ServiceProvider.For(ActorSystem).Props<T>(args);
+        public Props Create(params object [] args) =>
+            DependencyResolver.For(ActorSystem).Props<T>(args);
     }
 }

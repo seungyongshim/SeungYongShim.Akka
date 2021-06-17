@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 return BootstrapSetup.Create()
                                      .WithConfig(hoconFunc(ConfigurationFactory.ParseString(hocon)))
-                                     .And(ServiceProviderSetup.Create(sp));
+                                     .And(DependencyResolverSetup.Create(sp));
             })
             .AddSingleton<AkkaHostedServiceStart>(sp => sys =>
             {
