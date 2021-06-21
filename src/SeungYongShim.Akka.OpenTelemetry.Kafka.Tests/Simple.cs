@@ -125,7 +125,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka.Tests
                                               .ResolveOne(3.Seconds());
 
                 aggregateActor.Tell(new Sample { ID = "1" });
-                test.ExpectMsg<IMessage>(10.Seconds())
+                test.ExpectMsg<IMessage>(60.Seconds())
                     .Should()
                     .Be(new Sample { ID = "1" });
 

@@ -15,7 +15,7 @@ namespace Tests
     {
         public ParentActor()
         {
-            var childActor = Context.ActorOf(Context.PropsFactory<ChildActor>().Create(), "Child1");
+            var childActor = Context.ActorOf(Context.PropsFactory<ChildActor>().Create(Self), "Child1");
 
             Receive<string>(msg =>
             {
@@ -26,7 +26,7 @@ namespace Tests
 
     public class ChildActor : ReceiveActor
     {
-        public ChildActor(IServiceProvider sp) => Receive<string>(m => Sender.Tell(m));
+        public ChildActor(IServiceProvider sp, IActorRef actorRef) => Receive<string>(m => actorRef.Tell(m));
     }
 
     public class TestUsingGeneralActorFactory
