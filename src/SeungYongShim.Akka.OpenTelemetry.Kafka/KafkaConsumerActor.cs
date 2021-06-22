@@ -20,7 +20,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka
             ReceiveAsync<KafkaRequest>(async msg =>
             {
                 self.Tell(KafkaRequest.Instance);
-                var receive = await KafkaConsumer.ConsumeAsync(TimeSpan.FromSeconds(1));
+                var receive = await KafkaConsumer.ConsumeAsync(TimeSpan.FromSeconds(30));
                 using var activity = ActivitySourceStatic.Instance.StartActivity("KafkaConsumerActor", ActivityKind.Internal, receive.ActivityId);
                 await parserActor.Ask<KafkaCommit>(receive.Message);
                 receive.Commit();

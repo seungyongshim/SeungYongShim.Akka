@@ -29,8 +29,8 @@ namespace Microsoft.Extensions.DependencyInjection
                     .AddSingleton<GetTestActor>(sp => () => sp.GetService<TestKit>().TestActor)
                     .AddSingleton(sp => sp.GetService<TestKit>().Sys);
 
-            mocks.ForEach(x => services.AddSingleton(typeof(IPropsFactory<>).MakeGenericType(x),
-                                                     typeof(FakePropsFactory<>).MakeGenericType(x)));
+            mocks.ForEach(x => services.AddSingleton(typeof(IPropsFac<>).MakeGenericType(x),
+                                                     typeof(FakePropsFac<>).MakeGenericType(x)));
 
             return services;
         }

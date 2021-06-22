@@ -49,7 +49,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
                     using (var activity = ActivitySourceStatic.Instance.StartActivity("Exception", ActivityKind.Internal, x.ActivityId))
                     {
                         activity?.AddTag("actor.path", Self.Path);
-                        activity?.AddTagException(x.InnerException?.Demystify());
+                        activity?.AddTagException(x.InnerException);
 
                         base.ReceiveMessage(message);
                     }
@@ -57,7 +57,7 @@ namespace SeungYongShim.Akka.OpenTelemetry
 
                 case TraceMessage m:
                     message = m.Body;
-                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@{message.GetType().FullName}", ActivityKind.Internal, m.ActivityId))
+                    using (var activity = ActivitySourceStatic.Instance.StartActivity($"{Self.Path}@{message.GetType().Name}", ActivityKind.Internal, m.ActivityId))
                     {
                         var activityId = activity?.Id;
                         activity?.AddTag("actor.path", Self.Path);

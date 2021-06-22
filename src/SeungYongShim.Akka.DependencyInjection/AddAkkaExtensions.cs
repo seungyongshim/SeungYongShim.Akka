@@ -25,7 +25,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 startAction?.Invoke(sp, sys);
             })
-            .AddSingleton(typeof(IPropsFactory<>), typeof(PropsFactory<>))
+            .AddSingleton(typeof(IPropsFac<>), typeof(PropsFac<>))
             .AddHostedService<AkkaHostedService>()
             .AddSingleton(sp => ActorSystem.Create(actorSystemName, sp.GetService<ActorSystemSetup>()));
     }

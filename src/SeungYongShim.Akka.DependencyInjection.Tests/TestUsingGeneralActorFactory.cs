@@ -15,7 +15,7 @@ namespace Tests
     {
         public ParentActor()
         {
-            var childActor = Context.ActorOf(Context.PropsFactory<ChildActor>().Create(Self), "Child1");
+            var childActor = Context.ActorOf(Context.PropsFactory<ChildActor>().Create("1"), "Child1");
 
             Receive<string>(msg =>
             {
@@ -26,7 +26,7 @@ namespace Tests
 
     public class ChildActor : ReceiveActor
     {
-        public ChildActor(IServiceProvider sp, IActorRef actorRef) => Receive<string>(m => actorRef.Tell(m));
+        public ChildActor(IServiceProvider sp, string msg) => Receive<string>(m => Sender.Tell(msg));
     }
 
     public class TestUsingGeneralActorFactory
@@ -76,9 +76,9 @@ namespace Tests
 
             // Act
             var ret = await actorSystem.ActorSelection("/user/Parent")
-                                       .Ask<string>("Hello");
+                                       .Ask<string>("Hello", 60.Seconds());
 
-            ret.Should().Be("Hello, Kid");
+            ret.Should().Be("1");
 
             await host.StopAsync();
         }

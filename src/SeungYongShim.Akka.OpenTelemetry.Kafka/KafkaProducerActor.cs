@@ -7,7 +7,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka
 {
     public class KafkaProducerActor : ReceiveActor
     {
-        public record Message(IMessage Body, string Topic, string Key = "1");
+        public record KafkaMessage(IMessage Body, string Topic, string Key = null);
         public record Result();
         public record ResultException(Exception Exception) : Result;
 
@@ -15,7 +15,7 @@ namespace SeungYongShim.Akka.OpenTelemetry.Kafka
         {
             KafkaProducer = kafkaProducer;
 
-            ReceiveAsync<Message>(async msg =>
+            ReceiveAsync<KafkaMessage>(async msg =>
             {
                 var sender = Sender;
 

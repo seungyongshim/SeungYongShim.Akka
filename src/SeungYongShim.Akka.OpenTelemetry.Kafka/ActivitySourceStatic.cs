@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace SeungYongShim.Akka.OpenTelemetry
+namespace SeungYongShim.Akka.OpenTelemetry.Kafka
 {
     internal static class ActivitySourceStatic
     {
